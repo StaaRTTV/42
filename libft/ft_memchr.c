@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_memchr(const void* ptr, int ch, size_t count)
+#include <stddef.h>
+
+void	*ft_memchr(const void* ptr, int ch, size_t count)
 {
 	const unsigned char	*str;
 	size_t	i;

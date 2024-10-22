@@ -12,10 +12,13 @@
 
 #include <string.h>
 #include <stdio.h>
+#include "libft.h"
+
+void	*ft_memset(void *ptr, int value, size_t len);
 
 void	ft_bzero(void *ptr, size_t len)
 {
-	return (ft_memset(ptr, 0, len));
+	ft_memset(ptr, 0, len);
 }
 /*
 int	main(void)
