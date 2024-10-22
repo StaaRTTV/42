@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <bsd/string.h>
 
-int	ft_strlcpy(char *dest, char *src, size_t size)
+size_t	ft_strlcpy(char *dest, char *src, size_t size)
 {
 	size_t	i;
 	size_t	srcl;
