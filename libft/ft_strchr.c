@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+#include <string.h>
+
 char	*ft_strchr(const char *str, int c)
 {
 	while (*str != '\0')
@@ -22,3 +25,12 @@ char	*ft_strchr(const char *str, int c)
 		return ((char *)str);
 	return (NULL);
 }
+/*
+int	main(void)
+{
+	char	test[] = "eghgbfsbfbfbffppwhefsjh";
+	
+	printf("%p et %p", ft_strchr(test, 's'), strchr(test, 's'));
+	return (0);
+}
+*/
