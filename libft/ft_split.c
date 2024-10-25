@@ -6,7 +6,7 @@
 /*   By: gpochon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 10:18:26 by gpochon           #+#    #+#             */
-/*   Updated: 2024/10/25 14:58:05 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/10/25 15:37:10 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,17 @@ static char	*malloc_words(const char *s, char c)
 	return (word);
 }
 
+static void	free_malloc(char **split, int i)
+{
+	while (i >= 0)
+	{
+		free(split[i]);
+		i--;
+	}
+	free(split);
+	return (NULL);
+}
+
 char	**ft_split(char const *str, char c)
 {
 	int	words;
@@ -64,13 +75,24 @@ char	**ft_split(char const *str, char c)
 	i = 0;
 	words = word_count(str, c);
 	split = (char **)malloc(sizeof (char*) * (words + 1));
-	if (!s)
+	if (!str)
 		return (NULL);
 	if (!split)
 		return (NULL);
-	while (*s)
+	while (*str)
 	{
-		if (*s != c)
+		if (*str != c)
 		{
-			split[i] = malloc(count_words(str, c);
-
+			split[i] = malloc_words(str, c);
+			if (!split[i]++)
+				return (free_malloc(split, i - 2));
+			while (*str && *str != c)
+				str++;
+		}
+		else
+			str++;
+	}
+	split[i] = '\0';
+	return (split);
+}
+					
