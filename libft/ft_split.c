@@ -6,7 +6,7 @@
 /*   By: gpochon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 10:18:26 by gpochon           #+#    #+#             */
-/*   Updated: 2024/10/25 11:04:57 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/10/25 14:58:05 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	word_count(const char *s, char c)
 	is_word = 0;
 	while (*s)
 	{
-		if (*s != c && is_word = 0)
+		if (*s != c && is_word == 0)
 		{
 			is_word = 1;
 			count++;
@@ -54,3 +54,23 @@ static char	*malloc_words(const char *s, char c)
 	word[len] = '\0';
 	return (word);
 }
+
+char	**ft_split(char const *str, char c)
+{
+	int	words;
+	int	i;
+	char	**split;
+
+	i = 0;
+	words = word_count(str, c);
+	split = (char **)malloc(sizeof (char*) * (words + 1));
+	if (!s)
+		return (NULL);
+	if (!split)
+		return (NULL);
+	while (*s)
+	{
+		if (*s != c)
+		{
+			split[i] = malloc(count_words(str, c);
+

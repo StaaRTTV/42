@@ -60,8 +60,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	start;
 	size_t	end;
-	char*	str;
-	
+	char	*str;
+
 	start = 0;
 	end = ft_strlen(s1);
 	if (s1 && set)
@@ -76,5 +76,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	}
 	return (str);
 }
-
-		
