@@ -1,40 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpochon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 13:36:55 by gpochon           #+#    #+#             */
-/*   Updated: 2024/10/21 13:52:20 by gpochon          ###   ########.fr       */
+/*   Created: 2024/10/24 09:52:27 by gpochon           #+#    #+#             */
+/*   Updated: 2024/10/24 10:43:25 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 #include <stdio.h>
 
-char	*ft_strnstr(char *str, char *to_find, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
-	size_t	j;
+	size_t		i;
+	char		*result;
 
 	i = 0;
-	if (to_find[0] == '\0')
-		return (str);
-	while (str[i] != '\0' && i < len)
+	result = malloc(len * sizeof(char));
+	if (!s)
+		return (NULL);
+	while (s[start] && i < len)
 	{
-		j = 0;
-		if (str[i] == to_find[0])
-		{
-			while (to_find[j] != '\0' && (i + j) < len
-				&& str[i + j] == to_find[j])
-			{
-				j++;
-			}
-			if (to_find[j] == '\0')
-				return (&str[i]);
-		}
+		result[i] = s[start];
 		i++;
+		start++;
 	}
-	return (NULL);
+	result[i] = '\0';
+	return (result);
 }
+/*
+int	main(void)
+{
+	char	test[] = "wesh les amigos";
+
+	printf("%s", ft_substr(test, 5, 3));
+	return (0);
+}
+*/

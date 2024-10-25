@@ -27,7 +27,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t len)
 	}
 	return (dest);
 }
-
+/*
 int    main(void)
 {
     char str[50] = "je";
@@ -38,4 +38,4 @@ int    main(void)
     printf("apres: %s\n",str);
     return (0);
 }
-
+*/

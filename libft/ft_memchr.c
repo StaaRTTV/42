@@ -12,11 +12,11 @@
 
 #include <stddef.h>
 
-void	*ft_memchr(const void* ptr, int ch, size_t count)
+void	*ft_memchr(const void *ptr, int ch, size_t count)
 {
-	const unsigned char	*str;
-	size_t	i;
-	
+	const unsigned char			*str;
+	size_t						i;
+
 	str = (const unsigned char *)ptr;
 	i = 0;
 	while (i < count)

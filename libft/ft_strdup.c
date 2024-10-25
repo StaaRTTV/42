@@ -28,7 +28,7 @@ int	ft_strlen(char *str)
 char	*ft_strdup(char *s)
 {
 	char	*dest;
-	int	i;
+	int		i;
 
 	dest = malloc((ft_strlen(s) + 1) * sizeof(char));
 	i = 0;
@@ -64,4 +64,3 @@ int	main(void)
     return 0;
 }
 */
-
