@@ -22,7 +22,7 @@ int	ft_strlen(const char *str)
 	return (i);
 }
 
-int	ft_strlcpy(char *dest, char *src, size_t size)
+int	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	srcl;
