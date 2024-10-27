@@ -67,13 +67,13 @@ static void	free_malloc(char **split, int i)
 
 char	**ft_split(char const *str, char c)
 {
-	int	words;
-	int	i;
+	int		words;
+	int		i;
 	char	**split;
 
 	i = 0;
 	words = word_count(str, c);
-	split = (char **)malloc(sizeof (char*) * (words + 1));
+	split = (char **)malloc(sizeof (char *) * (words + 1));
 	if (!str)
 		return (NULL);
 	if (!split)
@@ -98,4 +98,3 @@ char	**ft_split(char const *str, char c)
 	split[i] = NULL;
 	return (split);
 }
-					
