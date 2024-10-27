@@ -12,9 +12,8 @@
 
 #include "libft.h"
 #include <stdio.h>
-#include <bsd/string.h>
 
-size_t	ft_strlcpy(char *dest, char *src, size_t size)
+int	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	srcl;
@@ -42,7 +41,7 @@ int	main(void)
     size_t copied_len = ft_strlcpy(dest, src, sizeof(dest));
 
 	printf("mine : %d\n", ft_strlcpy(dest, src, 0));
-	/*printf("real : %zu\n", strlcpy(dest, src, 50));
+	printf("real : %zu\n", strlcpy(dest, src, 50));
 	printf("Source: %s\n", src);
 	printf("Destination: %s\n", dest);
 	printf("Lenght of source: %zu\n", copied_len);

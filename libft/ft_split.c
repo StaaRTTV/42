@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpochon <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 10:18:26 by gpochon           #+#    #+#             */
-/*   Updated: 2024/10/25 15:37:10 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/10/26 16:36:20 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 static int	word_count(const char *s, char c)
 {
@@ -63,7 +63,6 @@ static void	free_malloc(char **split, int i)
 		i--;
 	}
 	free(split);
-	return (NULL);
 }
 
 char	**ft_split(char const *str, char c)
@@ -84,15 +83,19 @@ char	**ft_split(char const *str, char c)
 		if (*str != c)
 		{
 			split[i] = malloc_words(str, c);
-			if (!split[i]++)
-				return (free_malloc(split, i - 2));
+			if (!split[i])
+			{
+				free_malloc(split, i - 1);
+				return (NULL);
+			}
+			i++;
 			while (*str && *str != c)
 				str++;
 		}
 		else
 			str++;
 	}
-	split[i] = '\0';
+	split[i] = NULL;
 	return (split);
 }
 					

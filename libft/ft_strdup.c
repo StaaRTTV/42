@@ -15,16 +15,6 @@
 #include <stdio.h>
 #include <string.h>
 
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
 char	*ft_strdup(char *s)
 {
 	char	*dest;

@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
 int	ft_strlen(const char *str)
 {
@@ -23,7 +22,7 @@ int	ft_strlen(const char *str)
 	return (i);
 }
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+int	ft_strlcpy(char *dest, char *src, size_t size)
 {
 	size_t	i;
 	size_t	srcl;
@@ -72,7 +71,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 			end--;
 		str = malloc(sizeof(char) * (end - start + 1));
 		if (str)
-			ft_strlcpy(str, &s1[start], end - start + 1);
+			ft_strlcpy(str, (char *)(s1 + start), end - start + 1);
 	}
 	return (str);
 }

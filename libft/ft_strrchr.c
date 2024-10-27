@@ -11,12 +11,13 @@
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include "libft.h"
 
 char	*ft_strrchr(const char *str, int i)
 {
 	const char	*c;
 
-	*c = NULL;
+	c = NULL;
 	while (*str != '\0')
 	{
 		if (*str == (char)i)
