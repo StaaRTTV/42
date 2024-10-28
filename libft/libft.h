@@ -14,10 +14,10 @@
 # define LIBFT_H
 
 # include <string.h>
-# include <stdlib.h>
 # include <malloc.h>
 # include <stdbool.h>
 # include <unistd.h>
+# include <stdint.h>
 
 int		ft_atoi(const char *str);
 int		ft_isalnum(int i);
