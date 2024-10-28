@@ -74,21 +74,15 @@ char	**ft_split(char const *str, char c)
 	i = 0;
 	words = word_count(str, c);
 	split = (char **)malloc(sizeof (char *) * (words + 1));
-	if (!str)
-		return (NULL);
-	if (!split)
+	if (!str || !split)
 		return (NULL);
 	while (*str)
 	{
 		if (*str != c)
 		{
 			split[i] = malloc_words(str, c);
-			if (!split[i])
-			{
-				free_malloc(split, i - 1);
-				return (NULL);
-			}
-			i++;
+			if (!split[i++])
+				return (free_malloc(split, i - 1), NULL);
 			while (*str && *str != c)
 				str++;
 		}
