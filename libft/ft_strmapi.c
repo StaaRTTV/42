@@ -19,11 +19,14 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char			*result;
 
 	index = 0;
-	result = malloc(ft_strlen(s) * sizeof(char));
+	if (!f || !s)
+		return (NULL);
+	result = malloc((ft_strlen(s) + 1) * sizeof(char));
 	while (s[index])
 	{
 		result[index] = f(index, s[index]);
 		index++;
 	}
+	result[index] = '\0';
 	return (result);
 }
