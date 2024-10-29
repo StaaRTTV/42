@@ -57,12 +57,12 @@ char	*ft_strchr(const char *str, int c)
 	return (NULL);
 }
 
-char	*ft_strtrim(const char  *s1, const char  *set)
+char	*ft_strtrim(const char *s1, const char *set)
 {
 	size_t	start;
 	size_t	end;
 	char	*str;
-	
+
 	if (!s1 || !set)
 		return (NULL);
 	start = 0;
