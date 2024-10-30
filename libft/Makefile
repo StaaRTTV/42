@@ -37,8 +37,7 @@ SRCS	= ft_atoi.c\
 
 OBJECTS	= $(SRCS:.c=.o)
 INCS	= includes
-RM	= rm -rf
-COMP	= gcc
+COMP	= cc
 CFLAGS	= -Wall -Wextra -Werror
 AR = ar crs
 
