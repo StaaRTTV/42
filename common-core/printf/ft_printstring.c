@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printstring.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/03 17:22:14 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/03 17:53:40 by gpochon          ###   ########.fr       */
+/*   Created: 2024/11/03 17:23:08 by gpochon           #+#    #+#             */
+/*   Updated: 2024/11/03 17:28:54 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <unistd.h>
+#include "printf.h"
 
-int	ft_printf(const char *format, ...);
-void	ft_printchar(const char c);
-void	ft_printstring(char *str);
-void	ft_printnbr(int nb);
+void	ft_printstring(char *str)
+{
+	if (!str)
+		return ;
+	while (*str)
+	{
+		ft_printchar(*str);
+		str++;
+	}
+}
