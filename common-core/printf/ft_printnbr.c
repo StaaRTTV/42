@@ -6,13 +6,13 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 09:30:11 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/04 11:34:18 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/11/04 15:11:15 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int	ft_nbr_rec(int nb)
+static int	ft_nbr_rec(int nb)
 {
 	int	len;
 

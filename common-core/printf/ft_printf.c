@@ -6,24 +6,21 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 15:29:53 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/04 14:58:54 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/11/04 15:41:23 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-#include <stdarg.h>
-#include <unistd.h>
 #include <stdio.h>
 
 static int	ft_percent_what(char c, va_list args)
 {
-	int	len;
-	
+	int		len;
+
 	len = 0;
 	if (c == 'c')
 	{
-		char ch = va_arg(args, int);
-		ft_printchar(ch);
+		ft_printchar(va_arg(args, int));
 		len++;
 	}
 	else if (c == 's')
@@ -33,7 +30,9 @@ static int	ft_percent_what(char c, va_list args)
 	else if (c == 'd' || c == 'i')
 		len += ft_printnbr(args);
 	else if (c == 'p')
-		ft_print_pointer(args);
+		len += ft_print_pointer(args);
+	else if (c == 'x' || c == 'X')
+		len += ft_print_hex(args, c);
 	else if (c == '%')
 	{
 		ft_printchar('%');
@@ -45,19 +44,17 @@ static int	ft_percent_what(char c, va_list args)
 int	ft_printf(const char *format, ...)
 {
 	int		len;
-	va_list args;
-	va_start(args, format);
+	va_list	args;
 
+	va_start(args, format);
 	len = 0;
 	if (!format)
 		return (0);
 	while (*format != '\0')
 	{
 		if (*format == '%')
-		{	
+		{
 			format++;
-			if (*format == '\0')
-				return (0);
 			len += ft_percent_what(*format, args);
 		}
 		else
@@ -70,9 +67,11 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (len);
 }
-/*int	main()
+/*
+int	main()
 {
 	void	*c = "e";
 	ft_printf("test %p %%", c);
 	return (0);
-}*/
+}
+*/

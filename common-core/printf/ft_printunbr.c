@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printnbr.c                                      :+:      :+:    :+:   */
+/*   ft_printunbr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 09:30:11 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/04 11:34:18 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/11/04 15:15:02 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	ft_unbr_rec(unsigned int nb)
 
 int	ft_printunbr(va_list args)
 {
-	int	len;
+	int				len;
 	unsigned int	nb;
 
 	nb = va_arg(args, unsigned int);
