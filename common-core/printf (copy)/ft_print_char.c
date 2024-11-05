@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/03 17:22:14 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/05 13:58:04 by gpochon          ###   ########.fr       */
+/*   Created: 2024/11/04 09:58:02 by gpochon           #+#    #+#             */
+/*   Updated: 2024/11/05 09:21:27 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
-
-int		ft_printf(const char *format, ...);
-int		ft_print_string(va_list args);
-int		ft_print_nbr(va_list args);
-int		ft_print_unbr(va_list args);
-int		witch_one(unsigned int nb, char c);
-int		ft_print_pointer(void *ptr);
-void	ft_print_char(char c);
-
-#endif
+void	ft_print_char(char c)
+{
+	write(1, &c, 1);
+}

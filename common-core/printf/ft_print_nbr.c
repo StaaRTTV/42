@@ -1,39 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_pointer.c                                 :+:      :+:    :+:   */
+/*   ft_printnbr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 12:38:55 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/05 13:57:55 by gpochon          ###   ########.fr       */
+/*   Created: 2024/11/04 09:30:11 by gpochon           #+#    #+#             */
+/*   Updated: 2024/11/05 09:21:41 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	put_nbr_base(unsigned long nb, char *base)
+static int	ft_nbr_rec(int nb)
 {
-	int	i;
-	
-	i = 0;
-	if (nb >= 16)
+	int	len;
+
+	len = 0;
+	if (nb >= 10)
 	{
-		i += put_nbr_base(nb / 16, base);
+		len += ft_nbr_rec(nb / 10);
 	}
-	ft_print_char(base[nb % 16]);
-	i++;
-	return (i);
+	ft_print_char((nb % 10) + '0');
+	len++;
+	return (len);
 }
 
-int	ft_print_pointer(void *ptr)
+int	ft_print_nbr(va_list args)
 {
-	int	i;
+	int	len;
+	int	nb;
 
-	i = 0;
-	if (!ptr)
-		return (write(1, "(nil)", 5));
-	i += write (1, "0x", 2);
-	i += put_nbr_base((unsigned long)ptr, "0123456789abcdef");
-	return (i);
+	nb = va_arg(args, int);
+	len = 0;
+	if (nb == -2147483648)
+	{
+		write(1, "-2147483648", 11);
+		len = 11;
+		return (len);
+	}
+	if (nb < 0)
+	{
+		ft_print_char('-');
+		nb = -nb;
+		len++;
+	}
+	len += ft_nbr_rec(nb);
+	return (len);
 }

@@ -1,50 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printnbr.c                                      :+:      :+:    :+:   */
+/*   ft_print_string.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 09:30:11 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/04 15:11:15 by gpochon          ###   ########.fr       */
+/*   Created: 2024/11/04 10:20:13 by gpochon           #+#    #+#             */
+/*   Updated: 2024/11/05 13:17:00 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-static int	ft_nbr_rec(int nb)
+int	ft_print_string(va_list args)
 {
-	int	len;
+	char	*str;
+	int		len;
 
 	len = 0;
-	if (nb >= 10)
+	str = va_arg(args, char *);
+	if (!str)
+		str = "(null)";
+	while (*str)
 	{
-		len += ft_nbr_rec(nb / 10);
-	}
-	ft_printchar((nb % 10) + '0');
-	len++;
-	return (len);
-}
-
-int	ft_printnbr(va_list args)
-{
-	int	len;
-	int	nb;
-
-	nb = va_arg(args, int);
-	len = 0;
-	if (nb == -2147483648)
-	{
-		write(1, "-2147483648", 11);
-		len = 11;
-		return (len);
-	}
-	if (nb < 0)
-	{
-		ft_printchar('-');
-		nb = -nb;
+		write(1, str, 1);
+		str++;
 		len++;
 	}
-	len += ft_nbr_rec(nb);
 	return (len);
 }

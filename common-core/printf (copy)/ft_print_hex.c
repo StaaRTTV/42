@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_hex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/03 17:22:14 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/05 13:58:04 by gpochon          ###   ########.fr       */
+/*   Created: 2024/11/05 09:35:06 by gpochon           #+#    #+#             */
+/*   Updated: 2024/11/05 11:38:46 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
+static int	ft_print_hex(int nb, char *base)
+{
+	int i;
 
-int		ft_printf(const char *format, ...);
-int		ft_print_string(va_list args);
-int		ft_print_nbr(va_list args);
-int		ft_print_unbr(va_list args);
-int		witch_one(unsigned int nb, char c);
-int		ft_print_pointer(void *ptr);
-void	ft_print_char(char c);
-
-#endif
+	i = 0;
+	if (nb >= 16)
+		i += ft_print_hex(nb / 16, base);
+	ft_print_char(base[nb % 16]);
+	i++;
+	return (i);
+}
+int	witch_one(unsigned int nb, char c)
+{
+	if (c == 'x')
+		return (ft_print_hex(nb, "0123456789abcdef"));
+	if (c == 'X')
+		return (ft_print_hex(nb, "0123456789ABCDEF"));
+	return (0);
+}

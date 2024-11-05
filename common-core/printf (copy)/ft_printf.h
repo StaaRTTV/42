@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printstring.c                                   :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 10:20:13 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/04 11:05:59 by gpochon          ###   ########.fr       */
+/*   Created: 2024/11/03 17:22:14 by gpochon           #+#    #+#             */
+/*   Updated: 2024/11/05 09:25:21 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	ft_printstring(va_list args)
-{
-	char	*str;
-	int		len;
+# include <stdarg.h>
+# include <unistd.h>
 
-	len = 0;
-	str = va_arg(args, char *);
-	if (!str)
-		return (0);
-	while (*str)
-	{
-		write(1, str, 1);
-		str++;
-		len++;
-	}
-	return (len);
-}
+int		ft_printf(const char *format, ...);
+int		ft_print_string(va_list args);
+int		ft_print_nbr(va_list args);
+int		ft_print_unbr(va_list args);
+int		witch_one(unsigned int nb, char c);
+int		ft_print_pointer(void *ptr);
+void	ft_print_char(char c);
+
+#endif
