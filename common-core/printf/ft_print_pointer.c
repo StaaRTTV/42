@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:38:55 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/05 13:57:55 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/11/05 14:04:49 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	put_nbr_base(unsigned long nb, char *base)
 {
 	int	i;
-	
+
 	i = 0;
 	if (nb >= 16)
 	{

@@ -14,7 +14,7 @@
 
 static int	ft_print_hex(unsigned int nb, char *base)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (nb >= 16)
@@ -23,6 +23,7 @@ static int	ft_print_hex(unsigned int nb, char *base)
 	i++;
 	return (i);
 }
+
 int	witch_one(unsigned int nb, char c)
 {
 	if (c == 'x')
