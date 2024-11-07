@@ -20,6 +20,7 @@
 # include <stdint.h>
 # include <stddef.h>
 # include <stdlib.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
@@ -27,6 +28,12 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+int		ft_printf(const char *format, ...);
+int		ft_print_string(va_list args);
+int		ft_print_nbr(va_list args);
+int		ft_print_unbr(va_list args);
+int		witch_one(unsigned int nb, char c);
+int		ft_print_pointer(void *ptr);
 int		ft_lstsize(t_list *lst);
 int		ft_atoi(const char *str);
 int		ft_isalnum(int i);
@@ -59,6 +66,7 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_putchar_fd(char c, int fd);
 void	ft_putnbr_fd(int n, int fd);
+void	ft_print_char(char c);
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 void	*ft_bzero(void *ptr, size_t len);
 void	*ft_memcpy(void *dest, const void *src, size_t len);

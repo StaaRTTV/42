@@ -12,39 +12,6 @@
 
 #include "libft.h"
 
-int	ft_strlcpy(char *dest, const char *src, size_t size)
-{
-	size_t	i;
-	size_t	srcl;
-
-	i = 0;
-	srcl = 0;
-	while (src[srcl] != '\0')
-		srcl++;
-	if (size == 0)
-		return (srcl);
-	while (i < size - 1 && src[i] != '\0')
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (srcl);
-}
-
-char	*ft_strchr(const char *str, int c)
-{
-	while (*str != '\0')
-	{
-		if (*str == (char)c)
-			return ((char *)str);
-		str++;
-	}
-	if (c == '\0')
-		return ((char *)str);
-	return (NULL);
-}
-
 char	*ft_strtrim(const char *s1, const char *set)
 {
 	size_t	start;
