@@ -6,21 +6,24 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 19:21:24 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/08 15:42:21 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/11/08 22:39:21 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 static char *read_and_fill(int fd, char *remainder, int *bytes_read)
 {
     char *buffer;
     char *temp;
-
+    
+    if (!remainder && !(remainder = ft_strdup("")))
+        return (NULL);
     buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
     if (!buffer)
         return (NULL);
-    while (!ft_strchr(*remainder, '\n'))
+    while (!ft_strchr((const char *)remainder, '\n'))
     {
         *bytes_read = read(fd, buffer, BUFFER_SIZE);
         if (*bytes_read <= 0)
@@ -36,30 +39,38 @@ static char *read_and_fill(int fd, char *remainder, int *bytes_read)
         }
     }
     free(buffer);
-    return (*remainder);
+
+    return (remainder);
 }
 
-static char *extract_line(char *remainder)
+static char *extract_line(char **remainder)
 {
     char *line;
     char *new_remainder;
     int len;
 
     len = 0;
-    while (remainder[len] && remainder[len] != '\n')
-    {
-        line = ft_strdup(remainder);
-    }
+    if (!*remainder || !**remainder)
+        return (NULL);
+    while ((*remainder)[len] && (*remainder)[len] != '\n')
+        len++;
+    if ((*remainder)[len] == '\n')
+        len++;
+    line = ft_substr(*remainder, 0, len);
+    if (!line)
+        return (NULL);
+    new_remainder = ft_strdup(*remainder + len);
+    free(*remainder);
+    *remainder = new_remainder;
+    return (line);
 }
 
 char *get_next_line(int fd)
 {
     int bytes_read;
     char *line;
-    static char *remainder;
+    static char *remainder = NULL;
 
-    remainder = NULL;
-    line = NULL;
     if (fd < 0 || BUFFER_SIZE <= 0)
         return (0);
     bytes_read = 0;
@@ -67,25 +78,10 @@ char *get_next_line(int fd)
     if (!remainder)
         return (NULL);
     line = extract_line(&remainder);
+    if (bytes_read == 0 && !line)
+    {
+        free(remainder);
+        remainder = NULL;
+    }
     return (line);
 }
-/*
-#include <stdio.h>
-
-int	main()
-{
-	int	fd;
-	char	*line;
-
-	fd = open("test", O_RDONLY);
-	while (1)
-	{
-		line = get_next_line(fd);
-		if (line == NULL)
-			break ;
-		printf("%s", line);
-		free (line);
-	}
-	return (0);
-}
-*/
