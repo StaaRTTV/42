@@ -36,7 +36,7 @@ static char	*read_and_fill(int fd, char *remainder, int *bytes_read)
 			return (NULL);
 		}
 	}
-	free (buffer);
+	free(buffer);
 	return (remainder);
 }
 
@@ -69,7 +69,14 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (0);
+	{
+		if (remainder)
+		{
+			free(remainder);
+			remainder = NULL;
+		}
+		return (NULL);
+	}
 	if (!remainder)
 	{
 		remainder = ft_strdup("");
@@ -79,12 +86,42 @@ char	*get_next_line(int fd)
 	bytes_read = 0;
 	remainder = read_and_fill(fd, remainder, &bytes_read);
 	if (!remainder)
+	{
+		free(remainder);
 		return (NULL);
+	}
 	line = extract_line(&remainder);
 	if (bytes_read == 0 && !line)
 	{
-		free (remainder);
+		free(remainder);
 		remainder = NULL;
 	}
 	return (line);
 }
+/*
+int main(void)
+{
+    int fd;
+    char *line;
+
+    fd = open("test.txt", O_RDONLY);
+    if (fd == -1)
+    {
+        perror("Erreur d'ouverture du fichier");
+        return (1);
+    }
+    line = get_next_line(fd);
+    if (line)
+    {
+        printf("%s", line);
+        free(line);
+    }
+    else
+    {
+        printf("Fin du fichier ou erreur.\n");
+    }
+
+    close(fd);
+    return (0);
+}
+*/

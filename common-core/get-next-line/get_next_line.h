@@ -21,7 +21,7 @@
 #  define BUFFER_SIZE 5
 # endif
 
-int		ft_strlen(const char *str);
+unsigned int		ft_strlen(const char *str);
 char	*get_next_line(int fd);
 char	*ft_strchr(const char *str, int c);
 char	*ft_strdup(char *s);

@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-int	ft_strlen(const char *str)
+unsigned int	ft_strlen(const char *str)
 {
 	int	i;
 
@@ -40,6 +40,8 @@ char	*ft_strdup(char *s)
 	char	*dest;
 	int		i;
 
+	if (!s)
+		return (NULL);
 	dest = malloc((ft_strlen(s) + 1) * sizeof(char));
 	i = 0;
 	while (s[i])
@@ -57,6 +59,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	j;
 	char	*str;
 
+	if (!s)
+        	return (NULL);
+    	if (start >= ft_strlen(s))
+		return (ft_strdup(""));
 	str = (char *)malloc(sizeof(*s) * (len + 1));
 	if (str == 0)
 		return (NULL);
