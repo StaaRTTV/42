@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 19:21:24 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/09 15:54:23 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/11/12 10:20:58 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static char	*read_and_fill(int fd, char *remainder, int *bytes_read)
 	char	*buffer;
 	char	*temp;
 
+	if (!remainder)
+		remainder = ft_strdup("");
 	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (NULL);
@@ -62,13 +64,13 @@ static char	*extract_line(char **remainder)
 	return (line);
 }
 
-char	*get_next_line(int *fd)
+char	*get_next_line(int fd)
 {
-	static char *remainder = NULL;
-	int bytes_read;
-	char *line;
+	static char	*remainder;
+	int			bytes_read;
+	char		*line;
 
-	if (*fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd,0, 0) < 0)
 	{
 		if (remainder)
 		{
@@ -77,7 +79,8 @@ char	*get_next_line(int *fd)
 		}
 		return (NULL);
 	}
-	remainder = read_and_fill(*fd, remainder, &bytes_read);
+	bytes_read = 0;
+	remainder = read_and_fill(fd, remainder, &bytes_read);
 	if (!remainder)
 		return (NULL);
 	line = extract_line(&remainder);
@@ -88,11 +91,13 @@ char	*get_next_line(int *fd)
 	}
 	return (line);
 }
-
+/*
 int main(void)
 {
 	int fd;
 	char *line;
+	int	i = 710;
+	int k = 0;
 
 	fd = open("test.txt", O_RDONLY);
 	if (fd == -1)
@@ -100,17 +105,13 @@ int main(void)
 		perror("Erreur d'ouverture du fichier");
 		return (1);
 	}
-	line = get_next_line(&fd);
-	if (line)
+	while (k < i)
 	{
+		line = get_next_line(fd);
 		printf("%s", line);
-		free(line);
-	}
-	else
-	{
-		printf("Fin du fichier ou erreur.\n");
+		k++;
 	}
 	close(fd);
 	return (0);
 }
-
+*/

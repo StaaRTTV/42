@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 11:23:22 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/07 15:47:39 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/11/12 10:07:33 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*str;
 
 	if (!s)
-        	return (NULL);
-    	if (start >= ft_strlen(s))
+		return (NULL);
+	if (start >= ft_strlen(s))
 		return (ft_strdup(""));
 	str = (char *)malloc(sizeof(*s) * (len + 1));
 	if (str == 0)

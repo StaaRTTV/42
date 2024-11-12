@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 10:54:37 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/09 15:55:23 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/11/12 09:47:14 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@
 # endif
 
 unsigned int		ft_strlen(const char *str);
-char	*get_next_line(int *fd);
-char	*ft_strchr(const char *str, int c);
-char	*ft_strdup(char *s);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strjoin(char const *s1, char const *s2);
+char				*get_next_line(int fd);
+char				*ft_strchr(const char *str, int c);
+char				*ft_strdup(char *s);
+char				*ft_substr(char const *s, unsigned int start, size_t len);
+char				*ft_strjoin(char const *s1, char const *s2);
 
 #endif
