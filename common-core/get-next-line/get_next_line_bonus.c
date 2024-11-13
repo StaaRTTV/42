@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 19:21:24 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/13 09:30:23 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/11/13 09:51:37 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 #include <stdio.h>
 
 static char	*read_and_fill(int fd, char *remainder, int *bytes_read)
@@ -66,28 +66,28 @@ static char	*extract_line(char **remainder)
 
 char	*get_next_line(int fd)
 {
-	static char	*remainder;
+	static char	*remainder[1024];
 	int			bytes_read;
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read (fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 	{
-		if (remainder)
+		if (remainder[fd])
 		{
-			free(remainder);
-			remainder = NULL;
+			free(remainder[fd]);
+			remainder[fd] = NULL;
 		}
 		return (NULL);
 	}
 	bytes_read = 0;
-	remainder = read_and_fill(fd, remainder, &bytes_read);
-	if (!remainder)
+	remainder[fd] = read_and_fill(fd, remainder[fd], &bytes_read);
+	if (!remainder[fd])
 		return (NULL);
-	line = extract_line(&remainder);
+	line = extract_line(&remainder[fd]);
 	if (bytes_read == 0 && !line)
 	{
-		free(remainder);
-		remainder = NULL;
+		free(remainder[fd]);
+		remainder[fd] = NULL;
 	}
 	return (line);
 }
