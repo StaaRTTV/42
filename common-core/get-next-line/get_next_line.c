@@ -6,37 +6,47 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 19:21:24 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/13 15:43:02 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/11/14 15:56:51 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
 
+static char	*read_buffer(int fd, char *buffer, int *bytes_read)
+{
+	*bytes_read = read(fd, buffer, BUFFER_SIZE);
+	if (*bytes_read == -1)
+	{
+		free(buffer);
+		return (NULL);
+	}
+	buffer[*bytes_read] = '\0';
+	return (buffer);
+}
 static char	*read_and_fill(int fd, char *remainder, int *bytes_read)
 {
 	char	*buffer;
 	char	*temp;
 
-	if (!remainder)
-		remainder = ft_strdup("");
-	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buffer)
-		return (NULL);
+	buffer = malloc(BUFFER_SIZE + 1);
+	if (!buffer || (!remainder && !(remainder = ft_strdup(""))))
+        return (NULL);
 	while (!ft_strchr((const char *)remainder, '\n'))
 	{
-		*bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (*bytes_read <= 0)
+		buffer = read_buffer(fd, buffer, bytes_read);
+		if (!buffer)
+		{
+			free(remainder);
+			return (NULL);
+		}
+		if (*bytes_read == 0)
 			break ;
-		buffer[*bytes_read] = '\0';
 		temp = remainder;
 		remainder = ft_strjoin(remainder, buffer);
 		free(temp);
 		if (!remainder)
-		{
-			free(buffer);
-			return (NULL);
-		}
+			break;
 	}
 	free(buffer);
 	return (remainder);
@@ -70,7 +80,7 @@ char	*get_next_line(int fd)
 	int			bytes_read;
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read (fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 	{
 		if (remainder)
 		{
