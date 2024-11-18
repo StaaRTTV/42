@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 19:21:24 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/14 15:56:51 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/11/18 09:53:55 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,29 +24,33 @@ static char	*read_buffer(int fd, char *buffer, int *bytes_read)
 	buffer[*bytes_read] = '\0';
 	return (buffer);
 }
+
+static char	*buffer_check(char *buffer, char *remainder)
+{
+	if (!buffer)
+		return (NULL);
+	if (!remainder)
+		remainder = ft_strdup("");
+	return (remainder);
+}
+
 static char	*read_and_fill(int fd, char *remainder, int *bytes_read)
 {
 	char	*buffer;
 	char	*temp;
 
 	buffer = malloc(BUFFER_SIZE + 1);
-	if (!buffer || (!remainder && !(remainder = ft_strdup(""))))
-        return (NULL);
+	remainder = buffer_check(buffer, remainder);
 	while (!ft_strchr((const char *)remainder, '\n'))
 	{
 		buffer = read_buffer(fd, buffer, bytes_read);
-		if (!buffer)
-		{
-			free(remainder);
-			return (NULL);
-		}
 		if (*bytes_read == 0)
 			break ;
 		temp = remainder;
 		remainder = ft_strjoin(remainder, buffer);
 		free(temp);
 		if (!remainder)
-			break;
+			break ;
 	}
 	free(buffer);
 	return (remainder);
@@ -66,8 +70,6 @@ static char	*extract_line(char **remainder)
 	if ((*remainder)[len] == '\n')
 		len++;
 	line = ft_substr(*remainder, 0, len);
-	if (!line)
-		return (NULL);
 	new_remainder = ft_strdup(*remainder + len);
 	free (*remainder);
 	*remainder = new_remainder;
@@ -91,8 +93,6 @@ char	*get_next_line(int fd)
 	}
 	bytes_read = 0;
 	remainder = read_and_fill(fd, remainder, &bytes_read);
-	if (!remainder)
-		return (NULL);
 	line = extract_line(&remainder);
 	if (bytes_read == 0 && !line)
 	{
