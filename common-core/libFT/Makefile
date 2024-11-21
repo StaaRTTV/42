@@ -40,7 +40,11 @@ SRCS	= ft_atoi.c\
     ft_print_pointer.c\
     ft_print_string.c\
     ft_print_unbr.c\
-    ft_printf.c
+    ft_printf.c\
+    get_next_line.c\
+    get_next_line_bonus.c\
+    get_next_line_utils.c\
+    get_next_line_utils_bonus.c
 
 BONUS = ft_lstnew_bonus.c\
         ft_lstadd_front_bonus.c\

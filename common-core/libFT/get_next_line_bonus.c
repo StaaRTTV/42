@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "libft.h"
 #include <stdio.h>
 
 static char	*read_buffer(int fd, char *buffer, int *bytes_read)

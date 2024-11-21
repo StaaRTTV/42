@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 19:21:24 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/18 14:51:49 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/11/18 09:53:55 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "libft.h"
 #include <stdio.h>
 
 static char	*read_buffer(int fd, char *buffer, int *bytes_read)
@@ -47,7 +47,7 @@ static char	*read_and_fill(int fd, char *remainder, int *bytes_read)
 		if (*bytes_read == 0)
 			break ;
 		temp = remainder;
-		remainder = ft_strjoin(remainder, buffer);
+		remainder = ft_strjoin_gnl(remainder, buffer);
 		free(temp);
 		if (!remainder)
 			break ;
@@ -69,8 +69,8 @@ static char	*extract_line(char **remainder)
 		len++;
 	if ((*remainder)[len] == '\n')
 		len++;
-	line = ft_substr(*remainder, 0, len);
-	new_remainder = ft_strdup(*remainder + len);
+	line = ft_substr_gnl(*remainder, 0, len);
+	new_remainder = ft_strdup_gnl(*remainder + len);
 	free (*remainder);
 	*remainder = new_remainder;
 	return (line);
@@ -78,26 +78,26 @@ static char	*extract_line(char **remainder)
 
 char	*get_next_line(int fd)
 {
-	static char	*remainder[1024];
+	static char	*remainder;
 	int			bytes_read;
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 	{
-		if (remainder[fd])
+		if (remainder)
 		{
-			free(remainder[fd]);
-			remainder[fd] = NULL;
+			free(remainder);
+			remainder = NULL;
 		}
 		return (NULL);
 	}
 	bytes_read = 0;
-	remainder[fd] = read_and_fill(fd, remainder[fd], &bytes_read);
-	line = extract_line(&remainder[fd]);
+	remainder = read_and_fill(fd, remainder, &bytes_read);
+	line = extract_line(&remainder);
 	if (bytes_read == 0 && !line)
 	{
-		free(remainder[fd]);
-		remainder[fd] = NULL;
+		free(remainder);
+		remainder = NULL;
 	}
 	return (line);
 }
