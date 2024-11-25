@@ -10,14 +10,11 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= libftprintf.a
-SRCS	= ft_printf.c\
-    ft_print_char.c\
-    ft_print_hex.c\
-    ft_print_nbr.c\
-    ft_print_pointer.c\
-    ft_print_string.c\
-    ft_print_unbr.c
+NAME	= pipex.a
+SRCS	= error_handler.c\
+    ft_child.c\
+    pipex.c\
+    pipex_tools.c\
 
 OBJECTS	= $(SRCS:.c=.o)
 INCS	= includes

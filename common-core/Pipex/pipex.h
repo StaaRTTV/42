@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:55:41 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/24 14:50:44 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/11/25 13:48:00 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 # define PIPEX_H
 
 # include <stdarg.h>
+# include <stdio.h>
 # include <unistd.h>
 # include <sys/types.h>
 # include "../printf/ft_printf.h"
 # include <fcntl.h>
 # include <stdlib.h>
+# include <errno.h>
+# include <sys/wait.h>
 
-# define SYNTHAX_ERROR 2
-# define PIPE_ERROR 3
-# define FORK_ERROR 4
-
-void	ft_pipex_error(int error);
+void	error_handler(const char *name);
+void	child_1(int *filefd, char **argv, char **envp);
+void	child_2(int *filefd, char **argv, char **envp);
+char	**ft_split(char const *str, char c);
 
 #endif
