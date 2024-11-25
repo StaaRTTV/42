@@ -45,17 +45,17 @@ void	child_1(int *filefd, char **argv, char **envp)
 		error_handler("ft_split failed");
 	if (execve(cmd1[0], cmd1, envp) == -1)
 	{
-		free(cmd1);
+		free_cmd(cmd1);
 		error_handler("Command 1 failed");
 	}
 }
 
-void	child_2(int *filefd, char **argv, char **envp)
+void	parent(int *filefd, char **argv, char **envp)
 {
 	int	outfile_fd;
 	char	**cmd2;
 
-	outfile_fd = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	outfile_fd = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (outfile_fd == -1)
 		error_handler("error opening input file");
 	if(dup2(filefd[0], STDIN_FILENO) == -1)
@@ -69,7 +69,7 @@ void	child_2(int *filefd, char **argv, char **envp)
 	cmd2 = ft_split(argv[3], ' ');
 	if (execve(cmd2[0], cmd2, envp) == -1)
 	{
-		free(cmd2);
+		free_cmd(cmd2);
 		error_handler("Command 2 failed");
 	}
 	execve(cmd2[0], cmd2, envp);

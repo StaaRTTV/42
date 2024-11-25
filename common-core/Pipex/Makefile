@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= pipex.a
+NAME	= pipex
 SRCS	= error_handler.c\
     ft_child.c\
     pipex.c\
