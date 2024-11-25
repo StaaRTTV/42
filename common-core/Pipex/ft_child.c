@@ -6,12 +6,24 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:06:46 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/25 12:54:14 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/11/25 19:33:44 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+static void free_cmd(char **cmd)
+{
+    int i;
+
+    i = 0;
+    while (cmd[i] != NULL)
+    {
+        free(cmd[i]);
+        i++;
+    }
+    free(cmd);
+}
 void	child_1(int *filefd, char **argv, char **envp)
 {
 	int	infile_fd;
@@ -29,8 +41,13 @@ void	child_1(int *filefd, char **argv, char **envp)
 	close(infile_fd);
 
 	cmd1 = ft_split(argv[2], ' ');
-	execve(cmd1[0], cmd1, envp);
-	error_handler("Command 1 failed");
+	if (cmd1 == NULL)
+		error_handler("ft_split failed");
+	if (execve(cmd1[0], cmd1, envp) == -1)
+	{
+		free(cmd1);
+		error_handler("Command 1 failed");
+	}
 }
 
 void	child_2(int *filefd, char **argv, char **envp)
@@ -50,6 +67,11 @@ void	child_2(int *filefd, char **argv, char **envp)
 	close(outfile_fd);
 
 	cmd2 = ft_split(argv[3], ' ');
+	if (execve(cmd2[0], cmd2, envp) == -1)
+	{
+		free(cmd2);
+		error_handler("Command 2 failed");
+	}
 	execve(cmd2[0], cmd2, envp);
 	error_handler("Command 2 failed");
 }
