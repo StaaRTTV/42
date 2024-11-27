@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handler.c                                    :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 16:52:47 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/27 12:54:49 by gpochon          ###   ########.fr       */
+/*   Created: 2024/10/06 21:21:14 by gpochon           #+#    #+#             */
+/*   Updated: 2024/10/06 21:41:34 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/pipex.h"
+#include "libft.h"
 
-void	error_handler(const char *name)
+int	ft_strncmp(const char *s1, const char *s2, size_t len)
 {
-	perror(name);
-	exit(EXIT_FAILURE);
+	size_t	i;
+
+	i = 0;
+	while (len > i && s1[i] && s1[i] == s2[i])
+		i++;
+	if (i == len)
+		return (0);
+	return ((unsigned char) s1[i] - (unsigned char) s2[i]);
 }

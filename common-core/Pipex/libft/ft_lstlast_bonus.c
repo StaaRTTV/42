@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handler.c                                    :+:      :+:    :+:   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 16:52:47 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/27 12:54:49 by gpochon          ###   ########.fr       */
+/*   Created: 2024/11/06 11:05:37 by gpochon           #+#    #+#             */
+/*   Updated: 2024/11/06 14:48:16 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/pipex.h"
+#include "libft.h"
 
-void	error_handler(const char *name)
+t_list	*ft_lstlast(t_list *lst)
 {
-	perror(name);
-	exit(EXIT_FAILURE);
+	t_list	*actual;
+
+	actual = lst;
+	if (!actual)
+		return (NULL);
+	while (actual->next != NULL)
+		actual = actual->next;
+	return (actual);
 }

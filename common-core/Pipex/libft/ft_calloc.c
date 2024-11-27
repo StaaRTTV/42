@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handler.c                                    :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
+/*   By: gpochon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 16:52:47 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/27 12:54:49 by gpochon          ###   ########.fr       */
+/*   Created: 2024/10/22 10:29:42 by gpochon           #+#    #+#             */
+/*   Updated: 2024/10/22 10:29:44 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/pipex.h"
+#include "libft.h"
 
-void	error_handler(const char *name)
+void	*ft_calloc(size_t n, size_t size)
 {
-	perror(name);
-	exit(EXIT_FAILURE);
+	void	*ptr;
+
+	if (n != 0 && size > (size_t) - 1 / n)
+		return (NULL);
+	ptr = malloc(n * size);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, n * size);
+	return (ptr);
 }

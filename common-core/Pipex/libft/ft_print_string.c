@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handler.c                                    :+:      :+:    :+:   */
+/*   ft_print_string.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 16:52:47 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/27 12:54:49 by gpochon          ###   ########.fr       */
+/*   Created: 2024/11/04 10:20:13 by gpochon           #+#    #+#             */
+/*   Updated: 2024/11/05 13:17:00 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/pipex.h"
+#include "libft.h"
 
-void	error_handler(const char *name)
+int	ft_print_string(va_list args)
 {
-	perror(name);
-	exit(EXIT_FAILURE);
+	char	*str;
+	int		len;
+
+	len = 0;
+	str = va_arg(args, char *);
+	if (!str)
+		str = "(null)";
+	while (*str)
+	{
+		write(1, str, 1);
+		str++;
+		len++;
+	}
+	return (len);
 }

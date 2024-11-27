@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handler.c                                    :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 16:52:47 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/27 12:54:49 by gpochon          ###   ########.fr       */
+/*   Created: 2024/09/30 21:26:12 by gpochon           #+#    #+#             */
+/*   Updated: 2024/10/01 21:24:28 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/pipex.h"
+#include "libft.h"
 
-void	error_handler(const char *name)
+void	*ft_memset(void *ptr, int value, size_t len)
 {
-	perror(name);
-	exit(EXIT_FAILURE);
+	while (len--)
+		((unsigned char *)ptr)[len] = (unsigned char)value;
+	return (ptr);
 }
+/*
+int    main(void)
+{
+    char str[50] = "nique ta mère simon";
+
+    printf("output: %s\n",str);
+    ft_memset(str, 'E', 10);
+    printf("output: %s\n",str);
+    return (0);
+}
+*/

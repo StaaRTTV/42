@@ -6,7 +6,7 @@
 #    By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 14:02:20 by gpochon           #+#    #+#              #
-#    Updated: 2024/11/05 14:02:24 by gpochon          ###   ########.fr        #
+#    Updated: 2024/11/27 12:27:21 by gpochon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,27 +14,34 @@ NAME	= pipex
 SRCS	= error_handler.c\
     ft_child.c\
     pipex.c\
-    pipex_tools.c\
+    ft_path.c\
 
 OBJECTS	= $(SRCS:.c=.o)
 INCS	= includes
-COMP	= cc
-CFLAGS	= -Wall -Wextra -Werror
-AR = ar crs
+LIBFT_DIR = libft
+LIBFT = ${LIBFT_DIR}/libft.a
+COMP	= gcc
+CFLAGS	= -Wall -Wextra -Werror -g -I${INCS} 
+LDFLAGS = -L${LIBFT_DIR} -lft
 
 .c.o:
 	${COMP} ${CFLAGS} -c $< -o $@
 
-all:	${NAME}
+all : ${NAME}
 
-${NAME}: ${OBJECTS}
-	$(AR) $@ $^
+${LIBFT}: 
+	make -C ${LIBFT_DIR}
+
+${NAME}: ${OBJECTS} ${LIBFT}
+	${COMP} ${CFLAGS} -o $@ $^ ${LDFLAGS}
 
 clean :
 			rm -f ${OBJECTS}
+			make -C ${LIBFT_DIR} clean
 
 fclean :	clean
 			rm -f ${NAME}
+			make -C ${LIBFT_DIR} fclean
 
 re:			fclean all
 

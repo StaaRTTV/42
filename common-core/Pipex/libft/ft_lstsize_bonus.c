@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handler.c                                    :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 16:52:47 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/27 12:54:49 by gpochon          ###   ########.fr       */
+/*   Created: 2024/11/06 10:54:00 by gpochon           #+#    #+#             */
+/*   Updated: 2024/11/06 14:48:11 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/pipex.h"
+#include "libft.h"
 
-void	error_handler(const char *name)
+int	ft_lstsize(t_list *lst)
 {
-	perror(name);
-	exit(EXIT_FAILURE);
+	int		size_list;
+	t_list	*actual;
+
+	actual = lst;
+	size_list = 0;
+	while (actual != NULL)
+	{
+		size_list++;
+		actual = actual->next;
+	}
+	return (size_list);
 }

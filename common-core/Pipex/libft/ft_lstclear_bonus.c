@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handler.c                                    :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 16:52:47 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/27 12:54:49 by gpochon          ###   ########.fr       */
+/*   Created: 2024/11/06 12:11:48 by gpochon           #+#    #+#             */
+/*   Updated: 2024/11/06 14:48:08 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/pipex.h"
+#include "libft.h"
 
-void	error_handler(const char *name)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	perror(name);
-	exit(EXIT_FAILURE);
+	t_list	*new;
+
+	if (!lst || !del)
+		return ;
+	while (*lst)
+	{
+		new = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = new;
+	}
+	*lst = NULL;
 }
