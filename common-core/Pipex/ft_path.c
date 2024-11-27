@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 09:24:53 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/27 13:24:10 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/11/27 13:52:47 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,20 @@ static char	*join_path(const char *dir, const char *cmd)
 	ft_strlcpy(full_path + len_dir + 1, cmd, len_cmd + 1);
 	return (full_path);
 }
-static char *find_cmd_in_path(char *path, char *cmd)
+
+static char	*find_cmd_in_path(char *path, char *cmd)
 {
-	char *full_path = join_path(path, cmd);
+	char	*full_path;
+
+	full_path = join_path(path, cmd);
 	if (!full_path)
 		return (NULL);
-	
 	if (access(full_path, F_OK | X_OK) == 0)
 		return (full_path);
-	
 	free(full_path);
 	return (NULL);
 }
+
 char	*ft_path(char *cmd, char **envp)
 {
 	char	**paths;

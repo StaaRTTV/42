@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 15:13:52 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/27 12:54:55 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/11/27 13:51:20 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	main(const int argc, char **argv, char **envp)
 {
-	int	filefd[2];
+	int		filefd[2];
 	pid_t	pid;
 
 	if (argc != 5)
@@ -27,7 +27,6 @@ int	main(const int argc, char **argv, char **envp)
 		error_handler("First fork error\n");
 	if (pid == 0)
 		child_1(filefd, argv, envp);
-	
 	waitpid(pid, NULL, 0);
 	parent(filefd, argv, envp);
 	return (0);
