@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "includes/pipex.h"
-#include <unistd.h>
 
 int	main(const int argc, char **argv, char **envp)
 {

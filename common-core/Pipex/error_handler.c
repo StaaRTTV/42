@@ -14,6 +14,8 @@
 
 void	error_handler(const char *name)
 {
+	if (errno == 0)
+		errno = EINVAL;
 	perror(name);
 	exit(EXIT_FAILURE);
 }
