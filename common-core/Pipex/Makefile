@@ -21,7 +21,7 @@ INCS	= includes
 LIBFT_DIR = libft
 LIBFT = ${LIBFT_DIR}/libft.a
 COMP	= gcc
-CFLAGS	= -Wall -Wextra -Werror -g -I${INCS} 
+CFLAGS	= -Wall -Wextra -Werror -g -I${INCS} -fPIC
 LDFLAGS = -L${LIBFT_DIR} -lft
 
 .c.o:
