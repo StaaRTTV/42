@@ -6,14 +6,14 @@
 #    By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 13:21:22 by gpochon           #+#    #+#              #
-#    Updated: 2024/12/03 14:26:18 by gpochon          ###   ########.fr        #
+#    Updated: 2024/12/03 20:18:37 by gpochon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= so_long
 SRCS	= game.c\
-    	map.c\
-		so_long.c
+	map.c\
+	so_long.c
 
 OBJECTS	= $(SRCS:.c=.o)
 INCS	= includes
@@ -46,18 +46,18 @@ debug:
 	${MAKE} -C ${LIBFT_DIR} debug
 	${MAKE} -C ${MLX_DIR} clean
 	${MAKE} -C ${MLX_DIR} debug
-	${MAKE} all CFLAGS="${GFLAGS}"
+	${MAKE} all CFLAGS=${GFLAGS}
 
 clean :
-			rm -f ${OBJECTS}
-			make -C ${LIBFT_DIR} clean
-			make -C ${MLX_DIR} clean
+	rm -f ${OBJECTS}
+	make -C ${LIBFT_DIR} clean
+	make -C ${MLX_DIR} clean
 
-fclean :	clean
-			rm -f ${NAME}
-			make -C ${LIBFT_DIR} fclean
-			make -C ${MLX_DIR} clean
+fclean: clean
+	rm -f ${NAME}
+	make -C ${LIBFT_DIR} fclean
+	make -C ${MLX_DIR} fclean
 
 re:			fclean all
 
-.PHONY:		all clean fclean re
+.PHONY:		all clean fclean re debug
