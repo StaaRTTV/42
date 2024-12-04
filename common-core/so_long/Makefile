@@ -6,7 +6,7 @@
 #    By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 13:21:22 by gpochon           #+#    #+#              #
-#    Updated: 2024/12/03 20:18:37 by gpochon          ###   ########.fr        #
+#    Updated: 2024/12/03 15:01:29 by gpochon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,8 @@ MLX_DIR = ./minilibx-linux
 MLX = ${MLX_DIR}/libmlx.a
 COMP	= cc
 CFLAGS = -Wall -Wextra -Ofast -march=native -ffast-math -flto
-GFLAGS = -g3 -O0 -fsanitize=address
-LDFLAGS = -L${LIBFT_DIR} -L$(MLX_DIR) -lft -lmlx -lX11 -lXext -lXrender -lm 
+GFLAGS = -g -O0 -fsanitize=address
+LDFLAGS = -L${LIBFT_DIR} -L$(MLX_DIR) -lft -lmlx -lX11 -lXext -lXrender -lm
 
 .c.o:
 	${COMP} ${CFLAGS} -c $< -o $@
@@ -46,18 +46,18 @@ debug:
 	${MAKE} -C ${LIBFT_DIR} debug
 	${MAKE} -C ${MLX_DIR} clean
 	${MAKE} -C ${MLX_DIR} debug
-	${MAKE} all CFLAGS=${GFLAGS}
+	${MAKE} all CFLAGS="${GFLAGS}"
 
 clean :
-	rm -f ${OBJECTS}
-	make -C ${LIBFT_DIR} clean
-	make -C ${MLX_DIR} clean
+			rm -f ${OBJECTS}
+			make -C ${LIBFT_DIR} clean
+			make -C ${MLX_DIR} clean
 
-fclean: clean
-	rm -f ${NAME}
-	make -C ${LIBFT_DIR} fclean
-	make -C ${MLX_DIR} fclean
+fclean :	clean
+			rm -f ${NAME}
+			make -C ${LIBFT_DIR} fclean
+			make -C ${MLX_DIR} clean
 
 re:			fclean all
 
-.PHONY:		all clean fclean re debug
+.PHONY:		all clean fclean re

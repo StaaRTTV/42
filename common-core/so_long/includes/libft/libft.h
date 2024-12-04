@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 13:55:27 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/21 11:15:55 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/04 11:19:50 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,7 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
-# endif
+# define BUFFER_SIZE 42
 
 int				ft_printf(const char *format, ...);
 int				ft_print_string(va_list args);

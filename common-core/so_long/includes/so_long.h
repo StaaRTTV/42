@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:43:25 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/03 11:53:13 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/04 11:18:51 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 
-typedef struct s_data
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_data;
+# define TILE_SIZE 128
 
 typedef struct s_game
 {
@@ -45,7 +38,6 @@ int		close_game(t_game *game);
 void	load_sprites(t_game *game);
 void	render_map(t_game *game);
 char	**load_map(const char *filename);
-void	put_pixel(t_data *img, int x, int y, int color);
 void	free_map(char **map);
 
 

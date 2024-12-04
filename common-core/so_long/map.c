@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:13:05 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/03 14:54:25 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/04 10:24:34 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,8 @@ char	**load_map(const char *filename)
 	if (fd == -1)
 		return (NULL);
 	map = malloc(sizeof(char *) * (line_count + 1));
-	if (map == NULL)
-	{
-		close(fd);
+	if (!map)
 		return (NULL);
-	}
 	i = 0;
 	while ((line = get_next_line(fd)) != NULL)
 	{
@@ -73,11 +70,11 @@ void	load_sprites(t_game *game)
 	int		img_width;
 	int		img_height;
 	
-	game->wall = mlx_xpm_file_to_image(game->mlx, "sprites/bush.xpm", &img_width, &img_height);
-	game->floor = mlx_xpm_file_to_image(game->mlx, "sprites/grass.xpm", &img_width, &img_height);
-	game->collectible = mlx_xpm_file_to_image(game->mlx, "sprites/collectible.xpm", &img_width, &img_height);
-	game->exit = mlx_xpm_file_to_image(game->mlx, "sprites/portal.xpm", &img_width, &img_height);
-	game->character = mlx_xpm_file_to_image(game->mlx, "sprites/front_char.xpm", &img_width, &img_height);
+	game->wall = mlx_xpm_file_to_image(game->mlx, "bush.xpm", &img_width, &img_height);
+	game->floor = mlx_xpm_file_to_image(game->mlx, "grass.xpm", &img_width, &img_height);
+	game->collectible = mlx_xpm_file_to_image(game->mlx, "collectible.xpm", &img_width, &img_height);
+	game->exit = mlx_xpm_file_to_image(game->mlx, "portal.xpm", &img_width, &img_height);
+	game->character = mlx_xpm_file_to_image(game->mlx, "character.xpm", &img_width, &img_height);
 
 	if (game->wall == NULL || game->floor == NULL || game->collectible == NULL || game->exit == NULL || game->character == NULL)
 	{
@@ -88,31 +85,28 @@ void	load_sprites(t_game *game)
 
 void	render_map(t_game *game)
 {
-	int	i;
-	int	j;
+	int	x;
+	int	y;
 
-	i = 0;
-	while (game->map[i])
+	y = 0;
+	while (game->map[y])
 	{
-		j = 0;
-		while (game->map[i][j])
+		x = 0;
+		while (game->map[y][x])
 		{
-			if (game->map[i][j] == '1')
-				mlx_put_image_to_window(game->mlx, game->win, game->wall, j * 128, i * 128);
-			else if (game->map[i][j] == '0')
-				mlx_put_image_to_window(game->mlx, game->win, game->floor, j * 128, i * 128);
-			else if (game->map[i][j] == 'C')
-				mlx_put_image_to_window(game->mlx, game->win, game->collectible, j * 128, i * 128);
-			else if (game->map[i][j] == 'E')
-				mlx_put_image_to_window(game->mlx, game->win, game->exit, j * 128, i * 128);
-			else if (game->map[i][j] == 'P')
-			{
-				mlx_put_image_to_window(game->mlx, game->win, game->floor, j * 128, i * 128);
-				mlx_put_image_to_window(game->mlx, game->win, game->character, j * 128, i * 128);
-			}
-			j++;
+			if (game->map[y][y] == '1')
+				mlx_put_image_to_window(game->mlx, game->win, game->wall, x * 128, y * 128);
+			else if (game->map[y][x] == '0')
+				mlx_put_image_to_window(game->mlx, game->win, game->floor, x * 128, y * 128);
+			else if (game->map[y][x] == 'C')
+				mlx_put_image_to_window(game->mlx, game->win, game->collectible, x * 128, y * 128);
+			else if (game->map[y][x] == 'E')
+				mlx_put_image_to_window(game->mlx, game->win, game->exit, x * 128, y * 128);
+			else if (game->map[y][x] == 'P')
+				mlx_put_image_to_window(game->mlx, game->win, game->character, x * 128, y * 128);
+			x++;
 		}
-		i++;
+		y++;
 	}
 }
 

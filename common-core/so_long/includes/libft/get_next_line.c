@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 19:21:24 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/18 09:53:55 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/04 11:28:33 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static char	*read_buffer(int fd, char *buffer, int *bytes_read)
 {
-	*bytes_read = read(fd, buffer, BUFFER_SIZE);
+	*bytes_read = read(fd, buffer, 42);
 	if (*bytes_read == -1)
 	{
 		free(buffer);
@@ -39,7 +39,9 @@ static char	*read_and_fill(int fd, char *remainder, int *bytes_read)
 	char	*buffer;
 	char	*temp;
 
-	buffer = malloc(BUFFER_SIZE + 1);
+	buffer = malloc(42 + 1);
+	if (!buffer)
+		return (NULL);
 	remainder = buffer_check(buffer, remainder);
 	while (!ft_strchr((const char *)remainder, '\n'))
 	{
@@ -82,7 +84,7 @@ char	*get_next_line(int fd)
 	int			bytes_read;
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || 42 <= 0)
 	{
 		if (remainder)
 		{
