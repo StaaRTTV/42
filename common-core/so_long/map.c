@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:13:05 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/04 10:24:34 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/04 14:16:20 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,11 @@ void	load_sprites(t_game *game)
 	int		img_width;
 	int		img_height;
 	
-	game->wall = mlx_xpm_file_to_image(game->mlx, "bush.xpm", &img_width, &img_height);
-	game->floor = mlx_xpm_file_to_image(game->mlx, "grass.xpm", &img_width, &img_height);
-	game->collectible = mlx_xpm_file_to_image(game->mlx, "collectible.xpm", &img_width, &img_height);
-	game->exit = mlx_xpm_file_to_image(game->mlx, "portal.xpm", &img_width, &img_height);
-	game->character = mlx_xpm_file_to_image(game->mlx, "character.xpm", &img_width, &img_height);
+	game->wall = mlx_xpm_file_to_image(game->mlx, "sprites/bush.xpm", &img_width, &img_height);
+	game->floor = mlx_xpm_file_to_image(game->mlx, "sprites/grass.xpm", &img_width, &img_height);
+	game->collectible = mlx_xpm_file_to_image(game->mlx, "sprites/collectible.xpm", &img_width, &img_height);
+	game->exit = mlx_xpm_file_to_image(game->mlx, "sprites/portal.xpm", &img_width, &img_height);
+	game->character = mlx_xpm_file_to_image(game->mlx, "sprites/character.xpm", &img_width, &img_height);
 
 	if (game->wall == NULL || game->floor == NULL || game->collectible == NULL || game->exit == NULL || game->character == NULL)
 	{
@@ -94,7 +94,7 @@ void	render_map(t_game *game)
 		x = 0;
 		while (game->map[y][x])
 		{
-			if (game->map[y][y] == '1')
+			if (game->map[y][x] == '1')
 				mlx_put_image_to_window(game->mlx, game->win, game->wall, x * 128, y * 128);
 			else if (game->map[y][x] == '0')
 				mlx_put_image_to_window(game->mlx, game->win, game->floor, x * 128, y * 128);

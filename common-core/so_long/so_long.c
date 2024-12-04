@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 10:58:04 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/04 10:08:33 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/04 14:10:52 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int main(int argc, char **argv)
         return (1);
     }
     game.mlx = mlx_init();
-    game.win = mlx_new_window(game.mlx, TILE_SIZE * 14, TILE_SIZE * 5, "Map Renderer");
+    game.win = mlx_new_window(game.mlx, TILE_SIZE * 15, TILE_SIZE * 5, "Map Renderer");
     game.wall = mlx_xpm_file_to_image(game.mlx, "sprites/bush.xpm", &(int){0}, &(int){0});
     game.floor = mlx_xpm_file_to_image(game.mlx, "sprites/grass.xpm", &(int){0}, &(int){0});
     game.character = mlx_xpm_file_to_image(game.mlx, "sprites/character.xpm", &(int){0}, &(int){0});
