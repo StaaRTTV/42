@@ -6,11 +6,18 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 10:58:04 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/04 14:10:52 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/05 12:47:17 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/so_long.h"
+
+void    size_of_map(t_game *game)
+{
+    while (game->map[game->height])
+        game->height++;
+    game->width = (ft_strlen(game->map[0]) - 1);
+}
 
 int main(int argc, char **argv)
 {
@@ -27,14 +34,12 @@ int main(int argc, char **argv)
         write(2, "Error: Failed to load map\n", 26);
         return (1);
     }
+    size_of_map(&game);
     game.mlx = mlx_init();
-    game.win = mlx_new_window(game.mlx, TILE_SIZE * 15, TILE_SIZE * 5, "Map Renderer");
-    game.wall = mlx_xpm_file_to_image(game.mlx, "sprites/bush.xpm", &(int){0}, &(int){0});
-    game.floor = mlx_xpm_file_to_image(game.mlx, "sprites/grass.xpm", &(int){0}, &(int){0});
-    game.character = mlx_xpm_file_to_image(game.mlx, "sprites/character.xpm", &(int){0}, &(int){0});
-	game.collectible = mlx_xpm_file_to_image(game.mlx, "sprites/collectible.xpm", &(int){0}, &(int){0});
-	game.exit = mlx_xpm_file_to_image(game.mlx, "sprites/portal.xpm", &(int){0}, &(int){0});
+    game.win = mlx_new_window(game.mlx, TILE_SIZE * game.width, TILE_SIZE * game.height, "Map Renderer");
+    load_sprites(&game);
     render_map(&game);
+    map_validator(&game);
     mlx_hook(game.win, 17, 0, (int (*)(void *))close_game, &game);
     mlx_loop(game.mlx);
     return (0);

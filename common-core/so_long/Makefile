@@ -6,14 +6,15 @@
 #    By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 13:21:22 by gpochon           #+#    #+#              #
-#    Updated: 2024/12/04 13:49:09 by gpochon          ###   ########.fr        #
+#    Updated: 2024/12/05 10:59:06 by gpochon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= so_long
 SRCS	= game.c\
 	map.c\
-	so_long.c
+	so_long.c\
+	map_validator.c
 
 OBJECTS	= $(SRCS:.c=.o)
 INCS	= includes
