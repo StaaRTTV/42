@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:43:25 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/09 11:06:32 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/09 15:15:34 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <fcntl.h>
 # include <X11/keysym.h> 
 
-# define TILE_SIZE 128
 # define ESCAPE 65307
 # define W 119
 # define A 97
@@ -42,6 +41,7 @@ typedef struct s_game
 	void	*win;
 	int 	width;
 	int 	height;
+	int		collectibles;
 	char	**map;
 	void	*wall;
 	void	*floor;
@@ -50,16 +50,19 @@ typedef struct s_game
 	void	*character;
 	int		x_player;
 	int		y_player;
+	int		moves;
+	int		tile_size;
 }	t_game;
 
+void	load_sprites(t_game *game);
+void	size_of(t_game *game);
+void	count_collectibles(t_game *game);
 int		handle_movement(int keycode, t_game *game);
 int		close_game(t_game *game);
-void	load_sprites(t_game *game);
 void	render_map(t_game *game);
 char	**load_map(const char *filename);
 void	free_map(char **map);
 void	map_validator(t_game *game);
-void	size_of_map(t_game *game);
 void	init_player_position(t_game *game);
 
 #endif
