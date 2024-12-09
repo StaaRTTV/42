@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:13:05 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/05 12:20:13 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/09 10:43:20 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,11 @@ void	load_sprites(t_game *game)
 	int		img_width;
 	int		img_height;
 	
-	game->wall = mlx_xpm_file_to_image(game->mlx, "sprites/bush.xpm", &img_width, &img_height);
-	game->floor = mlx_xpm_file_to_image(game->mlx, "sprites/grass.xpm", &img_width, &img_height);
-	game->collectible = mlx_xpm_file_to_image(game->mlx, "sprites/collectible.xpm", &img_width, &img_height);
-	game->exit = mlx_xpm_file_to_image(game->mlx, "sprites/portal.xpm", &img_width, &img_height);
-	game->character = mlx_xpm_file_to_image(game->mlx, "sprites/character.xpm", &img_width, &img_height);
+	game->wall = mlx_xpm_file_to_image(game->mlx, sprite_wall, &img_width, &img_height);
+	game->floor = mlx_xpm_file_to_image(game->mlx, sprite_floor, &img_width, &img_height);
+	game->collectible = mlx_xpm_file_to_image(game->mlx, sprite_collectible, &img_width, &img_height);
+	game->exit = mlx_xpm_file_to_image(game->mlx, sprite_exit, &img_width, &img_height);
+	game->character = mlx_xpm_file_to_image(game->mlx, sprite_still, &img_width, &img_height);
 
 	if (game->wall == NULL || game->floor == NULL || game->collectible == NULL || game->exit == NULL || game->character == NULL)
 	{

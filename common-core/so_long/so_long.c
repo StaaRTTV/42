@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 10:58:04 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/05 12:47:17 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/09 11:06:56 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ int main(int argc, char **argv)
     load_sprites(&game);
     render_map(&game);
     map_validator(&game);
-    mlx_hook(game.win, 17, 0, (int (*)(void *))close_game, &game);
+    init_player_position(&game);
+    mlx_hook(game.win, 2, 1L << 0, handle_movement, &game);
     mlx_loop(game.mlx);
     return (0);
 }
