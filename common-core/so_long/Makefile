@@ -6,7 +6,7 @@
 #    By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 13:21:22 by gpochon           #+#    #+#              #
-#    Updated: 2024/12/09 10:18:05 by gpochon          ###   ########.fr        #
+#    Updated: 2024/12/10 11:11:30 by gpochon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ SRCS	= game.c\
 	map.c\
 	so_long.c\
 	map_validator.c\
-	movements.c
+	movements.c\
+	bonus.c
 
 OBJECTS	= $(SRCS:.c=.o)
 INCS	= includes

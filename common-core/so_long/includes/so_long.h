@@ -6,18 +6,19 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:43:25 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/09 15:15:34 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/10 15:23:40 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../minilibx-linux/mlx.h"
 # include "../includes/libft/libft.h"
-# include <stdio.h>
+# include "../minilibx-linux/mlx.h"
+# include <X11/keysym.h>
 # include <fcntl.h>
-# include <X11/keysym.h> 
+# include <stdio.h>
+# include <time.h>
 
 # define ESCAPE 65307
 # define W 119
@@ -25,44 +26,64 @@
 # define S 115
 # define D 100
 
-# define sprite_still "sprites/character.xpm"
-# define sprite_up "sprites/back_char.xpm"
-# define sprite_down "sprites/character_walk.xpm"
-# define sprite_left "sprites/left_char.xpm"
-# define sprite_right "sprites/right_char.xpm"
-# define sprite_wall "sprites/bush.xpm"
-# define sprite_floor "sprites/grass.xpm"
-# define sprite_collectible "sprites/collectible.xpm"
-# define sprite_exit "sprites/portal.xpm"
+# define SPRITE_STILL "sprites/character.xpm"
+# define SPRITE_UP "sprites/back_char.xpm"
+# define SPRITE_DOWN "sprites/character_walk.xpm"
+# define SPRITE_LEFT "sprites/left_char.xpm"
+# define SPRITE_RIGHT "sprites/right_char.xpm"
+# define SPRITE_WALL "sprites/bush.xpm"
+# define SPRITE_FLOOR "sprites/grass.xpm"
 
-typedef struct s_game
+# define SPRITE_EXIT "sprites/frame1.xpm"
+# define SPRITE_EXIT2 "sprites/frame2.xpm"
+# define SPRITE_EXIT3 "sprites/frame3.xpm"
+# define SPRITE_EXIT4 "sprites/frame4.xpm"
+# define SPRITE_EXIT5 "sprites/frame5.xpm"
+# define SPRITE_EXIT6 "sprites/frame6.xpm"
+
+# define SPRITE_COLLECTIBLE "sprites/gem1.xpm"
+# define SPRITE_COLLECTIBLE2 "sprites/gem2.xpm"
+# define SPRITE_COLLECTIBLE3 "sprites/gem3.xpm"
+# define SPRITE_COLLECTIBLE4 "sprites/gem4.xpm"
+# define SPRITE_COLLECTIBLE5 "sprites/gem5.xpm"
+# define SPRITE_COLLECTIBLE6 "sprites/gem6.xpm"
+
+typedef struct s_g
 {
 	void	*mlx;
 	void	*win;
-	int 	width;
-	int 	height;
+	int		width;
+	int		height;
 	int		collectibles;
 	char	**map;
 	void	*wall;
 	void	*floor;
-	void 	*collectible;
-	void	*exit;
-	void	*character;
+	void	*collectible[6];
+	void	*exit[6];
+	void	*chr;
 	int		x_player;
 	int		y_player;
 	int		moves;
 	int		tile_size;
-}	t_game;
+	int		frame;
+	clock_t	last_time;
 
-void	load_sprites(t_game *game);
-void	size_of(t_game *game);
-void	count_collectibles(t_game *game);
-int		handle_movement(int keycode, t_game *game);
-int		close_game(t_game *game);
-void	render_map(t_game *game);
-char	**load_map(const char *filename);
-void	free_map(char **map);
-void	map_validator(t_game *game);
-void	init_player_position(t_game *game);
+}			t_g;
+
+void		animate_gem(t_g *game, int x, int y);
+void		load_gem(t_g *game);
+void		animate_portal(t_g *game, int x, int y);
+void		load_portal(t_g *game);
+void		ft_print_moves(t_g *game);
+void		load_sprites(t_g *game);
+void		count_collectibles(t_g *game);
+int			handle_movement(int keycode, t_g *game);
+int			close_game(t_g *game);
+void		render_map(t_g *game);
+char		**load_map(const char *filename);
+void		free_map(char **map);
+void		map_validator(t_g *game);
+void		init_player_position(t_g *game);
+void		size_of(t_g *game);
 
 #endif
