@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 21:11:51 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/10 15:28:01 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/11 13:42:45 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	change_sprite(t_g *game, char *sprite)
 	int	img_width;
 	int	img_height;
 
+	mlx_destroy_image(game->mlx, game->chr);
 	game->chr = mlx_xpm_file_to_image(game->mlx, sprite, &img_width,
 			&img_height);
 	if (game->chr == NULL)

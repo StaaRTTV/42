@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:43:25 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/10 15:23:40 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/11 13:37:59 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ void		free_map(char **map);
 void		map_validator(t_g *game);
 void		init_player_position(t_g *game);
 void		size_of(t_g *game);
+void		free_textures(t_g *game);
 
 #endif

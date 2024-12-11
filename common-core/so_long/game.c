@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:37:50 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/10 15:27:32 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/11 13:48:16 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int	close_game(t_g *game)
 	while (game->map[i])
 		free(game->map[i++]);
 	free(game->map);
-	mlx_destroy_window(game->mlx, game->win);
+	free_textures(game);
+	mlx_destroy_display(game->mlx);
+	free(game->mlx);
+	free(game->win);
 	exit(0);
 	return (0);
 }
@@ -43,4 +46,23 @@ void	count_collectibles(t_g *game)
 		}
 		y++;
 	}
+}
+
+void	free_textures(t_g *game)
+{
+	mlx_destroy_image(game->mlx, game->wall);
+	mlx_destroy_image(game->mlx, game->floor);
+	mlx_destroy_image(game->mlx, game->chr);
+	mlx_destroy_image(game->mlx, game->exit[0]);
+	mlx_destroy_image(game->mlx, game->exit[1]);
+	mlx_destroy_image(game->mlx, game->exit[2]);
+	mlx_destroy_image(game->mlx, game->exit[3]);
+	mlx_destroy_image(game->mlx, game->exit[4]);
+	mlx_destroy_image(game->mlx, game->exit[5]);
+	mlx_destroy_image(game->mlx, game->collectible[0]);
+	mlx_destroy_image(game->mlx, game->collectible[1]);
+	mlx_destroy_image(game->mlx, game->collectible[2]);
+	mlx_destroy_image(game->mlx, game->collectible[3]);
+	mlx_destroy_image(game->mlx, game->collectible[4]);
+	mlx_destroy_image(game->mlx, game->collectible[5]);
 }

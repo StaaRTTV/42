@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 10:58:04 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/10 15:28:01 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/11 13:43:58 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	main(int argc, char **argv)
 		return (write(2, "Error: Failed to load map\n", 26));
 	game.mlx = mlx_init();
 	load_sprites(&game);
-	load_portal(&game);
 	map_validator(&game);
 	count_collectibles(&game);
 	init_player_position(&game);
@@ -56,5 +55,6 @@ int	main(int argc, char **argv)
 	mlx_hook(game.win, 2, 1L << 0, handle_movement, &game);
 	mlx_loop_hook(game.mlx, *update_game, &game);
 	mlx_loop(game.mlx);
+	free_map(game.map);
 	return (0);
 }
