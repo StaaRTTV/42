@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:43:25 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/11 13:37:59 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/16 10:41:12 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdio.h>
 # include <time.h>
 
+# define tile_size 32
 # define ESCAPE 65307
 # define W 119
 # define A 97
@@ -64,8 +65,8 @@ typedef struct s_g
 	int		x_player;
 	int		y_player;
 	int		moves;
-	int		tile_size;
 	int		frame;
+	int		tile_size;
 	clock_t	last_time;
 
 }			t_g;
@@ -84,7 +85,6 @@ char		**load_map(const char *filename);
 void		free_map(char **map);
 void		map_validator(t_g *game);
 void		init_player_position(t_g *game);
-void		size_of(t_g *game);
 void		free_textures(t_g *game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 21:11:51 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/11 13:42:45 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/16 10:08:25 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	move_character(t_g *game, int x, int y)
 	{
 		game->map[game->y_player][game->x_player] = '0';
 		game->map[game->y_player + y][game->x_player + x] = 'P';
-		ft_putstr_fd("TIA GAGNE LE SANNNGGGG\n", 1);
+		ft_putstr_fd("TIG\n", 1);
 		close_game(game);
 	}
 }

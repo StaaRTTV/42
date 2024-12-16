@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 10:58:04 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/11 13:43:58 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/16 10:38:54 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	update_game(t_g *game)
 	ft_print_moves(game);
 	return (0);
 }
-
 void	size_of(t_g *game)
 {
 	while (game->map[game->height])
