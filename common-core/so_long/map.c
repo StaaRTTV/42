@@ -6,13 +6,13 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:13:05 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/16 10:38:59 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/16 11:50:49 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/so_long.h"
 
-size_t	count_lines(const char *filename)
+size_t	count_lines(const char *filename, t_g *game)
 {
 	int		fd;
 	size_t	line_count;
@@ -30,10 +30,11 @@ size_t	count_lines(const char *filename)
 		line = get_next_line(fd);
 	}
 	close(fd);
+	game->height = line_count;
 	return (line_count);
 }
 
-char	**load_map(const char *filename)
+char	**load_map(const char *filename, t_g *game)
 {
 	int		fd;
 	char	*line;
@@ -41,7 +42,7 @@ char	**load_map(const char *filename)
 	size_t	line_count;
 	int		i;
 
-	line_count = count_lines(filename);
+	line_count = count_lines(filename, game);
 	if (line_count == 0)
 		return (NULL);
 	fd = open(filename, O_RDONLY);
@@ -100,15 +101,15 @@ void	render_map(t_g *game)
 			px = x * game->tile_size;
 			py = y * game->tile_size;
 			if (game->map[y][x] == '1')
-				mlx_put_image_to_window(game->mlx, game->win, game->wall, px, py);
+				put_img(game, game->wall, px, py);
 			else if (game->map[y][x] == '0')
-				mlx_put_image_to_window(game->mlx, game->win, game->floor, px, py);
+				put_img(game, game->floor, px, py);
 			else if (game->map[y][x] == 'C')
 				animate_gem(game, px, py);
 			else if (game->map[y][x] == 'E')
 				animate_portal(game, px, py);
 			else if (game->map[y][x] == 'P')
-				mlx_put_image_to_window(game->mlx, game->win, game->chr, px, py);
+				put_img(game, game->chr, px, py);
 		}
 	}
 }

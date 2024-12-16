@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 21:11:51 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/16 10:08:25 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/16 11:48:30 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,4 +104,9 @@ int	handle_movement(int keycode, t_g *game)
 		change_sprite(game, SPRITE_RIGHT);
 	}
 	return (0);
+}
+
+void	put_img(t_g *game, void *img, int x, int y)
+{
+	mlx_put_image_to_window(game->mlx, game->win, img, x, y);
 }

@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 10:35:31 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/16 10:25:47 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/16 11:40:54 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static void	map_check_letters(t_g *game)
 				&& game->map[y][x] != '0' && game->map[y][x] != 'C'
 				&& game->map[y][x] != 'E' && game->map[y][x] != 'P')
 			{
-				write(2, "LA BITE A AXEL\n", 15);
 				ft_printf("Invalid character '%c' at line %d, column %d\n",
 					game->map[y][x], y, x);
 				exit(1);
@@ -120,6 +119,7 @@ static void	check_gem(t_g *game, char to_check)
 
 void	map_validator(t_g *game)
 {
+	size_of(game);
 	map_check_letters(game);
 	check_walls(game->map, game->height, game->width);
 	check_other(game, 'P');
