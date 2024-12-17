@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:06:46 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/27 13:50:56 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/17 20:56:14 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,17 @@ static void	ft_execute_command(char **cmd, char **envp)
 		error_handler("Command execution failed");
 	}
 }
+static int	killmyself(char *fuckyou)
+{
+	while (*fuckyou)
+	{
+		if (*fuckyou != ' ' && *fuckyou != '\t' && *fuckyou != '\n')
+			return (0);
+		fuckyou++;
+	}
+	return (1);
+}
+
 
 void	child_1(int *filefd, char **argv, char **envp)
 {
@@ -79,10 +90,10 @@ void	parent(int *filefd, char **argv, char **envp)
 	close(filefd[0]);
 	close(filefd[1]);
 	close(outfile_fd);
-	if (ft_strlen(cmd2) == 0)
+	if (ft_strlen(argv[3]) == 0 || killmyself(argv[3]) == 1) 
 		error_handler("No 2nd command");
 	cmd2 = ft_split(argv[3], ' ');
-	if (!cmd2 || cmd2[1] == ' ')
+	if (!cmd2)
 		error_handler("ft_split failed");
 	ft_execute_command(cmd2, envp);
 }
