@@ -79,8 +79,10 @@ void	parent(int *filefd, char **argv, char **envp)
 	close(filefd[0]);
 	close(filefd[1]);
 	close(outfile_fd);
+	if (ft_strlen(cmd2) == 0)
+		error_handler("No 2nd command");
 	cmd2 = ft_split(argv[3], ' ');
-	if (!cmd2)
+	if (!cmd2 || cmd2[1] == ' ')
 		error_handler("ft_split failed");
 	ft_execute_command(cmd2, envp);
 }
