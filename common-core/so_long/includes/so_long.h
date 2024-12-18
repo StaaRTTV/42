@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:43:25 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/16 11:44:39 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/18 13:22:39 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,27 @@
 # define S 115
 # define D 100
 
-# define SPRITE_STILL "sprites2/character.xpm"
-# define SPRITE_UP "sprites2/back_char.xpm"
-# define SPRITE_DOWN "sprites2/character_walk.xpm"
-# define SPRITE_LEFT "sprites2/left_char.xpm"
-# define SPRITE_RIGHT "sprites2/right_char.xpm"
-# define SPRITE_WALL "sprites2/bush.xpm"
-# define SPRITE_FLOOR "sprites2/grass.xpm"
+# define SPRITE_STILL "sprites/character.xpm"
+# define SPRITE_UP "sprites/back_char.xpm"
+# define SPRITE_DOWN "sprites/character_walk.xpm"
+# define SPRITE_LEFT "sprites/left_char.xpm"
+# define SPRITE_RIGHT "sprites/right_char.xpm"
+# define SPRITE_WALL "sprites/bush.xpm"
+# define SPRITE_FLOOR "sprites/grass.xpm"
 
-# define SPRITE_EXIT "sprites2/frame1.xpm"
-# define SPRITE_EXIT2 "sprites2/frame2.xpm"
-# define SPRITE_EXIT3 "sprites2/frame3.xpm"
-# define SPRITE_EXIT4 "sprites2/frame4.xpm"
-# define SPRITE_EXIT5 "sprites2/frame5.xpm"
-# define SPRITE_EXIT6 "sprites2/frame6.xpm"
+# define SPRITE_EXIT "sprites/frame1.xpm"
+# define SPRITE_EXIT2 "sprites/frame2.xpm"
+# define SPRITE_EXIT3 "sprites/frame3.xpm"
+# define SPRITE_EXIT4 "sprites/frame4.xpm"
+# define SPRITE_EXIT5 "sprites/frame5.xpm"
+# define SPRITE_EXIT6 "sprites/frame6.xpm"
 
-# define SPRITE_COLLECTIBLE "sprites2/gem1.xpm"
-# define SPRITE_COLLECTIBLE2 "sprites2/gem2.xpm"
-# define SPRITE_COLLECTIBLE3 "sprites2/gem3.xpm"
-# define SPRITE_COLLECTIBLE4 "sprites2/gem4.xpm"
-# define SPRITE_COLLECTIBLE5 "sprites2/gem5.xpm"
-# define SPRITE_COLLECTIBLE6 "sprites2/gem6.xpm"
+# define SPRITE_COLLECTIBLE "sprites/gem1.xpm"
+# define SPRITE_COLLECTIBLE2 "sprites/gem2.xpm"
+# define SPRITE_COLLECTIBLE3 "sprites/gem3.xpm"
+# define SPRITE_COLLECTIBLE4 "sprites/gem4.xpm"
+# define SPRITE_COLLECTIBLE5 "sprites/gem5.xpm"
+# define SPRITE_COLLECTIBLE6 "sprites/gem6.xpm"
 
 typedef struct s_g
 {

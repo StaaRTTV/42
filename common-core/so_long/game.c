@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:37:50 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/11 13:48:16 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/18 13:18:54 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,12 @@ int	close_game(t_g *game)
 		free(game->map[i++]);
 	free(game->map);
 	free_textures(game);
-	mlx_destroy_display(game->mlx);
-	free(game->mlx);
-	free(game->win);
+	if (game->win)
+		mlx_destroy_window(game->mlx, game->win);
+	if (game->mlx)
+		mlx_destroy_display(game->mlx);
+	if (game->mlx)
+		free(game->mlx);
 	exit(0);
 	return (0);
 }

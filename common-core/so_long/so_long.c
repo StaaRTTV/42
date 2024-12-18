@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 10:58:04 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/16 11:47:57 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/18 13:23:29 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	size_of(t_g *game)
 	while (game->map[game->height])
 		game->height++;
 	game->width = (ft_strlen(game->map[0]) - 1);
-	game->tile_size = 128;
+	game->tile_size = 32;
 }
 
 int	main(int argc, char **argv)
@@ -48,6 +48,5 @@ int	main(int argc, char **argv)
 	mlx_hook(game.win, 2, 1L << 0, handle_movement, &game);
 	mlx_loop_hook(game.mlx, *update_game, &game);
 	mlx_loop(game.mlx);
-	free_map(game.map);
 	return (0);
 }
