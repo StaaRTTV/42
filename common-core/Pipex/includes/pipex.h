@@ -14,7 +14,6 @@
 # define PIPEX_H
 
 # include <stdarg.h>
-# include <stdio.h>
 # include <unistd.h>
 # include <sys/types.h>
 # include "../libft/libft.h"

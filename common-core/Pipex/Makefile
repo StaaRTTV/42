@@ -6,7 +6,7 @@
 #    By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 14:02:20 by gpochon           #+#    #+#              #
-#    Updated: 2024/11/27 12:27:21 by gpochon          ###   ########.fr        #
+#    Updated: 2024/12/18 11:04:29 by gpochon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME	= pipex
 SRCS	= error_handler.c\
     ft_child.c\
     pipex.c\
-    ft_path.c\
+    ft_path.c
 
 OBJECTS	= $(SRCS:.c=.o)
 INCS	= includes

@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:06:46 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/17 20:56:14 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/18 10:49:39 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,10 @@ static void	ft_execute_command(char **cmd, char **envp)
 		free_cmd(cmd);
 		error_handler("Command not found");
 	}
-	if (execve(cmd_path, cmd, envp) == -1)
-	{
-		free(cmd_path);
-		free_cmd(cmd);
-		error_handler("Command execution failed");
-	}
+	execve(cmd_path, cmd, envp);
+	free(cmd_path);
+	free_cmd(cmd);
+	error_handler("Command execution failed");
 }
 static int	killmyself(char *fuckyou)
 {

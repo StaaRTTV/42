@@ -53,8 +53,6 @@ char	*ft_path(char *cmd, char **envp)
 		return (ft_strdup(cmd));
 	while (*envp && ft_strncmp("PATH=", *envp, 5) != 0)
 		envp++;
-	if (!*envp)
-		return (NULL);
 	paths = ft_split(*envp + 5, ':');
 	while (paths[i])
 	{
