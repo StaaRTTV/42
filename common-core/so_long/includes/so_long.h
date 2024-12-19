@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:43:25 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/19 16:29:54 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/19 16:35:24 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SO_LONG_H
 
 # include "../includes/libft/libft.h"
-# include "../minilibx-linux/mlx.h"
+# include "../mlx/mlx.h"
 # include <X11/keysym.h>
 # include <fcntl.h>
 # include <stdio.h>

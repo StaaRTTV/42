@@ -6,7 +6,7 @@
 #    By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 13:21:22 by gpochon           #+#    #+#              #
-#    Updated: 2024/12/19 13:52:34 by gpochon          ###   ########.fr        #
+#    Updated: 2024/12/19 16:35:12 by gpochon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ OBJECTS	= $(SRCS:.c=.o)
 INCS	= includes
 LIBFT_DIR = ./includes/libft
 LIBFT = ${LIBFT_DIR}/libft.a
-MLX_DIR = ./minilibx-linux
+MLX_DIR = ./mlx
 MLX = ${MLX_DIR}/libmlx.a
 COMP	= cc
 CFLAGS = -Wall -Wextra -Ofast -march=native -ffast-math -flto
