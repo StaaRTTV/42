@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:13:05 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/16 11:50:49 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/19 16:09:47 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ void	load_sprites(t_g *game)
 			&img_height);
 	game->floor = mlx_xpm_file_to_image(game->mlx, SPRITE_FLOOR, &img_width,
 			&img_height);
+	game->mob = mlx_xpm_file_to_image(game->mlx, SPRITE_MOB, &img_width,
+			&img_height);
 	load_portal(game);
 	load_gem(game);
 	game->chr = mlx_xpm_file_to_image(game->mlx, SPRITE_STILL, &img_width,
@@ -85,6 +87,21 @@ void	load_sprites(t_g *game)
 	}
 }
 
+static void	put_image(t_g *game, int px, int py, int y, int x)
+{
+	if (game->map[y][x] == '1')
+		put_img(game, game->wall, px, py);
+	else if (game->map[y][x] == '0')
+		put_img(game, game->floor, px, py);
+	else if (game->map[y][x] == 'C')
+		animate_gem(game, px, py);
+	else if (game->map[y][x] == 'E')
+		animate_portal(game, px, py);
+	else if (game->map[y][x] == 'P')
+		put_img(game, game->chr, px, py);
+	else if (game->map[y][x] == 'M')
+		put_img(game, game->mob, px, py);
+}
 void	render_map(t_g *game)
 {
 	int	x;
@@ -100,29 +117,7 @@ void	render_map(t_g *game)
 		{
 			px = x * game->tile_size;
 			py = y * game->tile_size;
-			if (game->map[y][x] == '1')
-				put_img(game, game->wall, px, py);
-			else if (game->map[y][x] == '0')
-				put_img(game, game->floor, px, py);
-			else if (game->map[y][x] == 'C')
-				animate_gem(game, px, py);
-			else if (game->map[y][x] == 'E')
-				animate_portal(game, px, py);
-			else if (game->map[y][x] == 'P')
-				put_img(game, game->chr, px, py);
+			put_image(game, px, py, y, x);
 		}
 	}
-}
-
-void	free_map(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-	{
-		free(map[i]);
-		i++;
-	}
-	free(map);
 }

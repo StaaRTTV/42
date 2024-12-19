@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 09:22:46 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/16 10:37:48 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/19 16:31:21 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	animate_gem(t_g *game, int x, int y)
 
 	mlx_put_image_to_window(game->mlx, game->win,
 		game->collectible[animation_step], x, y);
-	if (frame % 800 == 0)
+	if (frame % 300 == 0)
 	{
 		animation_step++;
 		if (animation_step == 6)

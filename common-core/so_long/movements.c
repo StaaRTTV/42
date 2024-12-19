@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 21:11:51 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/16 11:48:30 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/19 16:30:17 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static void	move_character(t_g *game, int x, int y)
 		game->map[game->y_player + y][game->x_player + x] = 'P';
 		game->y_player += y;
 		game->x_player += x;
-		game->moves++;
 	}
 	else if (game->map[game->y_player + y][game->x_player + x] == 'C')
 	{
@@ -44,7 +43,6 @@ static void	move_character(t_g *game, int x, int y)
 		game->y_player += y;
 		game->x_player += x;
 		game->collectibles--;
-		game->moves++;
 	}
 	else if (game->map[game->y_player + y][game->x_player + x] == 'E'
 		&& game->collectibles == 0)

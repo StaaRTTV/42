@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 10:35:31 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/16 11:40:54 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/19 16:07:37 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static void	map_check_letters(t_g *game)
 		{
 			if (game->map[y][x] != '\n' && game->map[y][x] != '1'
 				&& game->map[y][x] != '0' && game->map[y][x] != 'C'
-				&& game->map[y][x] != 'E' && game->map[y][x] != 'P')
+				&& game->map[y][x] != 'E' && game->map[y][x] != 'P'
+				&& game->map[y][x] != 'M')
 			{
 				ft_printf("Invalid character '%c' at line %d, column %d\n",
 					game->map[y][x], y, x);
@@ -124,5 +125,6 @@ void	map_validator(t_g *game)
 	check_walls(game->map, game->height, game->width);
 	check_other(game, 'P');
 	check_other(game, 'E');
+	check_other(game, 'M');
 	check_gem(game, 'C');
 }
