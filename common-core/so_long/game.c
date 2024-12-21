@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:37:50 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/19 13:30:11 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/21 12:08:57 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	free_textures(t_g *game)
 	mlx_destroy_image(game->mlx, game->collectible[3]);
 	mlx_destroy_image(game->mlx, game->collectible[4]);
 	mlx_destroy_image(game->mlx, game->collectible[5]);
+	mlx_destroy_image(game->mlx, game->mob);
 }
 
 void	free_map(char **map)
@@ -81,4 +82,10 @@ void	free_map(char **map)
 		i++;
 	}
 	free(map);
+}
+
+void	ft_exit(char *str)
+{
+	ft_putstr_fd(str, 1);
+	exit(1);
 }

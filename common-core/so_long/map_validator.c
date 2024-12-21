@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 10:35:31 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/19 16:07:37 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/21 12:23:47 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,21 @@ static void	check_walls(char **map, int height, int width)
 	while (x < width)
 	{
 		if (map[0][x] != '1')
-			exit(1);
+			ft_exit("Map isn't rectangular, or has no walls\n");
 		x++;
 	}
 	y = 1;
 	while (y < height - 1)
 	{
 		if (map[y][0] != '1' || map[y][width - 1] != '1')
-			exit(1);
+			ft_exit("Map isn't rectangular, or has no walls\n");
 		y++;
 	}
 	x = 0;
 	while (x < width)
 	{
 		if (map[height - 1][x] != '1')
-			exit(1);
+			ft_exit("Map isn't rectangular, or has no walls\n");
 		x++;
 	}
 }
@@ -125,6 +125,6 @@ void	map_validator(t_g *game)
 	check_walls(game->map, game->height, game->width);
 	check_other(game, 'P');
 	check_other(game, 'E');
-	check_other(game, 'M');
+	check_mob(game, 'M');
 	check_gem(game, 'C');
 }

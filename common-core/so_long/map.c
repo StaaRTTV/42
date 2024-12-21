@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:13:05 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/19 16:09:47 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/21 12:09:24 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ static void	put_image(t_g *game, int px, int py, int y, int x)
 	else if (game->map[y][x] == 'M')
 		put_img(game, game->mob, px, py);
 }
+
 void	render_map(t_g *game)
 {
 	int	x;

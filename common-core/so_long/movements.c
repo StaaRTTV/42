@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 21:11:51 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/19 16:30:17 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/21 14:19:53 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,31 +27,33 @@ static void	change_sprite(t_g *game, char *sprite)
 	}
 }
 
-static void	move_character(t_g *game, int x, int y)
+void	move_character(t_g *game, int x, int y)
 {
 	if (game->map[game->y_player + y][game->x_player + x] == '0')
 	{
 		game->map[game->y_player][game->x_player] = '0';
 		game->map[game->y_player + y][game->x_player + x] = 'P';
-		game->y_player += y;
-		game->x_player += x;
+		ft_count(game, x, y);
+		game->moves++;
 	}
 	else if (game->map[game->y_player + y][game->x_player + x] == 'C')
 	{
 		game->map[game->y_player][game->x_player] = '0';
 		game->map[game->y_player + y][game->x_player + x] = 'P';
-		game->y_player += y;
-		game->x_player += x;
+		ft_count(game, x, y);
 		game->collectibles--;
+		game->moves++;
 	}
-	else if (game->map[game->y_player + y][game->x_player + x] == 'E'
+	if (game->map[game->y_player + y][game->x_player + x] == 'E'
 		&& game->collectibles == 0)
 	{
 		game->map[game->y_player][game->x_player] = '0';
 		game->map[game->y_player + y][game->x_player + x] = 'P';
-		ft_putstr_fd("TIG\n", 1);
+		ft_putstr_fd("YOU WIN\nGAME MADE BY GPOCHON\nSPONSORED BY DELHAIZE\n",
+			1);
 		close_game(game);
 	}
+	mob_handle(game, x, y);
 }
 
 void	init_player_position(t_g *game)

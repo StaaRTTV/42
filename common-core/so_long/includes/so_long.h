@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:43:25 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/19 16:35:24 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/21 12:36:35 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_g
 	int		mob_x;
 	int		mob_y;
 	int		frame;
+	int 	mob_count;
 	int		tile_size;
 	clock_t	last_time;
 
@@ -79,6 +80,7 @@ void		animate_gem(t_g *game, int x, int y);
 void		load_gem(t_g *game);
 void		animate_portal(t_g *game, int x, int y);
 void		load_portal(t_g *game);
+void		ft_count(t_g *game, int x, int y);
 void		ft_print_moves(t_g *game);
 void		load_sprites(t_g *game);
 void		count_collectibles(t_g *game);
@@ -86,11 +88,17 @@ int			handle_movement(int keycode, t_g *game);
 void		mob_randomizer(t_g *game, int mob_x, int mob_y);
 int			close_game(t_g *game);
 void		render_map(t_g *game);
+void		mob_handle(t_g *game, int x, int y);
+void		check_mob(t_g *game, char to_check);
+void		ft_exit(char *str);
+void		move_character(t_g *game, int x, int y);
+void		count_mob(t_g *game);
+void		char_touch_mob(t_g *game, int x, int y);
 char		**load_map(const char *filename, t_g *game);
 void		free_map(char **map);
+void		make_mob_move(t_g *game);
 void		init_mob_position(t_g *game);
 void		map_validator(t_g *game);
-void		move_mob(t_g *game);
 void		init_player_position(t_g *game);
 void		free_textures(t_g *game);
 void		size_of(t_g *game);
