@@ -40,6 +40,7 @@ static void	ft_execute_command(char **cmd, char **envp)
 	free_cmd(cmd);
 	error_handler("Command execution failed");
 }
+
 static int	killmyself(char *fuckyou)
 {
 	while (*fuckyou)
@@ -50,7 +51,6 @@ static int	killmyself(char *fuckyou)
 	}
 	return (1);
 }
-
 
 void	child_1(int *filefd, char **argv, char **envp)
 {

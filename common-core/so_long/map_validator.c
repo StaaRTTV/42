@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 10:35:31 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/21 12:23:47 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/23 14:11:23 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static void	check_other(t_g *game, char to_check)
 	}
 	if (check == 0 || check > 1)
 	{
-		ft_printf("probleme de %c mon garssssss\n", to_check);
+		ft_printf("There is either no '%c' or too much.\n", to_check);
 		exit(1);
 	}
 }
@@ -113,7 +113,7 @@ static void	check_gem(t_g *game, char to_check)
 	}
 	if (check == 0)
 	{
-		ft_printf("probleme de %c mon garssssss\n", to_check);
+		ft_printf("There is no gems\n", to_check);
 		exit(1);
 	}
 }
