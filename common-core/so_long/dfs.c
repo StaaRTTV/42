@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 15:33:11 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/25 17:51:49 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/25 18:08:18 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,15 @@ static char	**copy_map(char **map)
     return (copy);
 }
 
+static void	if_not_accessible(t_g *game)
+{
+	if (game->collected != game->collectibles)
+	{
+		ft_printf("A gem or multiple gems aren't accessible\n");
+		exit(1);
+	}
+}
+
 int	verify_gems(t_g *game)
 {
 	int		x;
@@ -87,5 +96,6 @@ int	verify_gems(t_g *game)
 		y++;
 	}
 	free_map(map_copy);
+	if_not_accesible(game);
 	return (game->collected == game->collectibles);
 }
