@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 15:33:11 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/27 11:40:00 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/28 10:35:27 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	dfs_check_e(char **map, int x, int y, t_g *game)
 	if (x < 0 || y < 0 || !map[y] || map[y][x] == '1' || map[y][x] == 'V')
 		return;
 	if (map[y][x] == 'E')
-		game->is_exit++;
+		game->exit_found = 1;
 	map[y][x] = 'V';
 	dfs_check_e(map, x + 1, y, game);
 	dfs_check_e(map, x - 1, y, game);
@@ -62,9 +62,9 @@ static char	**copy_map(char **map)
 
 static void	if_not_accessible_e(t_g *game)
 {
-	if (game->is_exit == 0)
+	if (!game->exit_found)
 	{
-		ft_printf("ui\n");
+		ft_printf("The exit isn't acessible !\n");
 		exit(1);
 	}
 }
@@ -76,8 +76,6 @@ int	verify_exit(t_g *game)
 	char	**map_copy;
 
 	map_copy = copy_map(game->map);
-	if (!map_copy)
-		return (0);
 	y = 0;
 	while (map_copy[y])
 	{
@@ -86,6 +84,7 @@ int	verify_exit(t_g *game)
 		{
 			if (map_copy[y][x] == 'P')
 			{
+				game->exit_found = 0;
 				dfs_check_e(map_copy, x, y, game);
 				break;
 			}
@@ -95,5 +94,5 @@ int	verify_exit(t_g *game)
 	}
 	free_map(map_copy);
 	if_not_accessible_e(game);
-	return (0);
+	return (game->exit_found);
 }

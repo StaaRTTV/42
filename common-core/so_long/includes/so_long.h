@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:43:25 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/27 11:40:48 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/28 10:20:35 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ typedef struct s_g
 	int		mob_y;
 	int		frame;
 	int 	mob_count;
-	int		is_exit;
+	int		exit_found;
 	int		tile_size;
 	clock_t	last_time;
 
