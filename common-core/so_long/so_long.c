@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 10:58:04 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/27 11:40:55 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/28 14:52:49 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,13 @@ int	main(int argc, char **argv)
 {
 	t_g	game;
 
+	game.collected = 0;
 	game.moves = 0;
 	if (argc != 2)
-		return (write(2, "Usage: ./so_long map_file.ber\n", 30));
+		ft_exit("Usage: ./so_long map_file.ber\n");
 	game.map = load_map(argv[1], &game);
 	if (!game.map || !game.map[0])
-		return (write(2, "Error: Failed to load map\n", 26));
+		ft_exit("Error: Failed to load map\n");
 	game.mlx = mlx_init();
 	load_sprites(&game);
 	map_validator(&game);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movements.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
+/*   By: gpochon <gpochon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 21:11:51 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/21 14:19:53 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/28 12:41:22 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	change_sprite(t_g *game, char *sprite)
 			&img_height);
 	if (game->chr == NULL)
 	{
-		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Error\n", 1);
 		exit(EXIT_FAILURE);
 	}
 }

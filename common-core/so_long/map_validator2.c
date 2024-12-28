@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:21:05 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/21 12:23:34 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/28 14:57:02 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,35 @@ void	check_mob(t_g *game, char to_check)
 	}
 	if (check > 1)
 	{
+		ft_putstr_fd("Error\n", 1);
 		ft_printf("probleme de %c mon garssssss\n", to_check);
 		exit(1);
+	}
+}
+
+void	map_check_rectangle(t_g *game)
+{
+	int	x;
+	int	y;
+	int	width;
+
+	if (!game->map || !game->map[0])
+		ft_putstr_fd("Error\n", 1);
+	y = 0;
+	width = ft_strlen2emedunom(game->map[0]);
+	while (game->map[y])
+	{
+		x = ft_strlen2emedunom(game->map[y]);
+		if (x != width)
+		{
+			ft_putstr_fd("Error\n", 1);
+			ft_printf("Row %d: length = %d (expected %d)\n", y, x, width);
+		}
+		if (x == 0)
+		{
+			ft_putstr_fd("Error\n", 1);
+			ft_printf("Empty row detected in map\n");
+		}
+		y++;
 	}
 }

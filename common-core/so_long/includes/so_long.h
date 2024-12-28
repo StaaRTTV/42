@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:43:25 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/28 10:20:35 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/28 14:52:57 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <X11/keysym.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include <time.h>
 # include <stdlib.h>
+# include <time.h>
 
 # define ESCAPE 65307
 # define W 119
@@ -71,7 +71,7 @@ typedef struct s_g
 	int		mob_x;
 	int		mob_y;
 	int		frame;
-	int 	mob_count;
+	int		mob_count;
 	int		exit_found;
 	int		tile_size;
 	clock_t	last_time;
@@ -108,5 +108,6 @@ void		put_img(t_g *game, void *img, int x, int y);
 void		if_touch_mob(t_g *game, int x, int y);
 int			verify_gems(t_g *game);
 int			verify_exit(t_g *game);
+void		map_check_rectangle(t_g *game);
 
 #endif

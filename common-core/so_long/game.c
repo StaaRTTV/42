@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:37:50 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/25 17:47:15 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/28 14:50:45 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	free_map(char **map)
 
 void	ft_exit(char *str)
 {
+	ft_putstr_fd("Error\n", 1);
 	ft_putstr_fd(str, 1);
 	exit(1);
 }

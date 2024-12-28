@@ -6,30 +6,29 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 15:33:11 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/27 10:57:30 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/28 14:52:21 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /**
  * @file dfs.c
- * 
+ *
  * @brief Depth First Search algorithm
  * Contains the implementation of my Depth First Search algorithm
  * Necessary for the checking of the map (gems)
- * 
+ *
  */
 
 #include "includes/so_long.h"
 
 static void	dfs_check(char **map, int x, int y, t_g *game)
 {
-	if (x < 0 || y < 0 || !map[y] || map[y][x] == '1' || map[y][x] == 'V')
-		return;
-
+	if (x < 0 || y < 0 || !map[y] || map[y][x] == '1' || map[y][x] == 'V'
+		|| map[y][x] == 'E')
+		return ;
 	if (map[y][x] == 'C')
 		game->collected++;
 	map[y][x] = 'V';
-
 	dfs_check(map, x + 1, y, game);
 	dfs_check(map, x - 1, y, game);
 	dfs_check(map, x, y + 1, game);
@@ -38,18 +37,18 @@ static void	dfs_check(char **map, int x, int y, t_g *game)
 
 static char	**copy_map(char **map)
 {
-    char	**copy;
-    int		i;
+	char	**copy;
+	int		i;
 
-    i = 0;
-    while (map[i])
+	i = 0;
+	while (map[i])
 		i++;
-    copy = malloc(sizeof(char *) * (i + 1));
-    if (!copy)
+	copy = malloc(sizeof(char *) * (i + 1));
+	if (!copy)
 		return (NULL);
-    i = 0;
-    while (map[i])
-    {
+	i = 0;
+	while (map[i])
+	{
 		copy[i] = ft_strdup(map[i]);
 		if (!copy[i])
 		{
@@ -57,15 +56,16 @@ static char	**copy_map(char **map)
 			return (NULL);
 		}
 		i++;
-    }
-    copy[i] = NULL;
-    return (copy);
+	}
+	copy[i] = NULL;
+	return (copy);
 }
 
 static void	if_not_accessible(t_g *game)
 {
 	if (game->collected != game->collectibles)
 	{
+		ft_printf("Error\n");
 		ft_printf("A gem or multiple gems aren't accessible\n");
 		exit(1);
 	}
@@ -89,10 +89,10 @@ int	verify_gems(t_g *game)
 			if (map_copy[y][x] == 'P')
 			{
 				dfs_check(map_copy, x, y, game);
-				break;
+				break ;
 			}
 			x++;
-		} 
+		}
 		y++;
 	}
 	free_map(map_copy);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
+/*   By: gpochon <gpochon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 13:55:27 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/04 11:19:50 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/28 13:34:40 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int				ft_strlen(const char *str);
 int				ft_strncmp(const char *s1, const char *s2, size_t len);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
+int				ft_strlen2emedunom(const char *str);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
 char			*get_next_line(int fd);
 char			*ft_strchr_gnl(const char *str, int c);

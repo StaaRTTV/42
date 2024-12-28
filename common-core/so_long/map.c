@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:13:05 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/25 17:47:11 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/28 14:55:51 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,13 @@ void	load_sprites(t_g *game)
 	}
 }
 
-static void	put_image(t_g *game, int px, int py, int y, int x)
+static void	put_image(t_g *game, int y, int x)
 {
+	int	px;
+	int	py;
+
+	px = x * game->tile_size;
+	py = y * game->tile_size;
 	if (game->map[y][x] == '1')
 		put_img(game, game->wall, px, py);
 	else if (game->map[y][x] == '0')
@@ -107,8 +112,6 @@ void	render_map(t_g *game)
 {
 	int	x;
 	int	y;
-	int	px;
-	int	py;
 
 	y = -1;
 	while (game->map[++y])
@@ -116,9 +119,7 @@ void	render_map(t_g *game)
 		x = -1;
 		while (game->map[y][++x])
 		{
-			px = x * game->tile_size;
-			py = y * game->tile_size;
-			put_image(game, px, py, y, x);
+			put_image(game, y, x);
 		}
 	}
 }
