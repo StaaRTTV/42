@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:43:25 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/25 17:52:44 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/27 11:40:48 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ typedef struct s_g
 	int		mob_y;
 	int		frame;
 	int 	mob_count;
+	int		is_exit;
 	int		tile_size;
 	clock_t	last_time;
 
@@ -106,5 +107,6 @@ void		size_of(t_g *game);
 void		put_img(t_g *game, void *img, int x, int y);
 void		if_touch_mob(t_g *game, int x, int y);
 int			verify_gems(t_g *game);
+int			verify_exit(t_g *game);
 
 #endif

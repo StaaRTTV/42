@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 10:58:04 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/25 17:53:35 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/27 11:40:55 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	main(int argc, char **argv)
 	init_player_position(&game);
 	init_mob_position(&game);
 	verify_gems(&game);
+	verify_exit(&game);
 	game.win = mlx_new_window(game.mlx, game.tile_size * game.width,
 			game.tile_size * game.height, "SO FUCKING LONG");
 	mlx_hook(game.win, 17, 0L, close_game, &game);
