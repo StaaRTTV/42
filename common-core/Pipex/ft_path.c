@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 09:24:53 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/30 10:58:32 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/30 10:59:43 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static char	*find_cmd_in_path(char *path, char *cmd)
 	free(full_path);
 	return (NULL);
 }
+
 char	*ft_path(char *cmd, char **envp)
 {
 	char	**paths;

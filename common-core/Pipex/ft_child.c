@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:06:46 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/30 10:58:29 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/30 10:59:34 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	parent(int *filefd, char **argv, char **envp)
 	close(filefd[0]);
 	close(filefd[1]);
 	close(outfile_fd);
-	if (ft_strlen(argv[3]) == 0 || killmyself(argv[3]) == 1) 
+	if (ft_strlen(argv[3]) == 0 || killmyself(argv[3]) == 1)
 		error_handler("No 2nd command");
 	cmd2 = ft_split(argv[3], ' ');
 	if (!cmd2)
