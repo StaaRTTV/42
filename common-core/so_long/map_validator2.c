@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:21:05 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/28 14:57:02 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/30 10:29:01 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,21 @@ void	map_check_rectangle(t_g *game)
 			ft_printf("Empty row detected in map\n");
 		}
 		y++;
+	}
+}
+
+void	is_ber(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	if (str[i - 1] != 'r' || str[i - 2] != 'e' || str[i - 3] != 'b'
+		|| str[i - 4] != '.')
+	{
+		ft_putstr_fd("Error\n", 1);
+		ft_printf("The file is not a .ber file\n");
+		exit(1);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 10:58:04 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/28 14:52:49 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/30 10:28:25 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,18 @@ void	size_of(t_g *game)
 	game->tile_size = 32;
 }
 
+static void	init(t_g *game)
+{
+	load_sprites(game);
+	map_validator(game);
+	count_collectibles(game);
+	count_mob(game);
+	init_player_position(game);
+	init_mob_position(game);
+	verify_gems(game);
+	verify_exit(game);
+}
+
 int	main(int argc, char **argv)
 {
 	t_g	game;
@@ -39,14 +51,8 @@ int	main(int argc, char **argv)
 	if (!game.map || !game.map[0])
 		ft_exit("Error: Failed to load map\n");
 	game.mlx = mlx_init();
-	load_sprites(&game);
-	map_validator(&game);
-	count_collectibles(&game);
-	count_mob(&game);
-	init_player_position(&game);
-	init_mob_position(&game);
-	verify_gems(&game);
-	verify_exit(&game);
+	is_ber(argv[1]);
+	init(&game);
 	game.win = mlx_new_window(game.mlx, game.tile_size * game.width,
 			game.tile_size * game.height, "SO FUCKING LONG");
 	mlx_hook(game.win, 17, 0L, close_game, &game);
