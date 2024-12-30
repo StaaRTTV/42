@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 10:58:04 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/30 14:11:26 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/30 15:44:45 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ int	main(int argc, char **argv)
 	game.map = load_map(argv[1], &game);
 	if (!game.map || !game.map[0])
 		ft_exit("Error: Failed to load map\n");
-	is_ber(argv[1], &game);
 	size_of(&game);
 	game.mlx = mlx_init();
 	game.win = mlx_new_window(game.mlx, game.tile_size * game.width,
 			game.tile_size * game.height, "SO FUCKING LONG");
 	init(&game);
+	is_ber(argv[1], &game);
 	mlx_hook(game.win, 17, 0L, close_game, &game);
 	mlx_hook(game.win, 2, 1L << 0, handle_movement, &game);
 	mlx_loop_hook(game.mlx, *update_game, &game);

@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:05:14 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/30 15:35:13 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/30 15:40:16 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ void	free_textures(t_g *game)
 
 void	error_exit(t_g *game, char *message)
 {
-	ft_putstr_fd("Error\n", 2);
-	ft_putstr_fd(message, 2);
+	ft_putstr_fd("Error\n", 1);
+	ft_putstr_fd(message, 1);
 	if (game)
 		free_game(game);
 	exit(EXIT_FAILURE);
