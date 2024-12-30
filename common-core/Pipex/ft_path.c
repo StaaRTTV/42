@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_path.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
+/*   By: gpochon <gpochon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 09:24:53 by gpochon           #+#    #+#             */
-/*   Updated: 2024/11/27 13:52:47 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/30 10:51:33 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ static char	*find_cmd_in_path(char *path, char *cmd)
 	free(full_path);
 	return (NULL);
 }
-
 char	*ft_path(char *cmd, char **envp)
 {
 	char	**paths;

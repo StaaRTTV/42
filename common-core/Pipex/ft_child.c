@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_child.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
+/*   By: gpochon <gpochon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:06:46 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/18 10:49:39 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/30 10:43:07 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ void	child_1(int *filefd, char **argv, char **envp)
 
 	infile_fd = open(argv[1], O_RDONLY);
 	if (infile_fd == -1)
-		error_handler("error opening input file");
+		error_handler("Error opening input file");
 	if (dup2(infile_fd, STDIN_FILENO) == -1)
-		error_handler("dup2 infile_fd failed");
+		error_handler("Dup2 infile_fd failed");
 	if (dup2(filefd[1], STDOUT_FILENO) == -1)
-		error_handler("dup2 filefd[1] failed");
+		error_handler("Dup2 filefd[1] failed");
 	close(filefd[0]);
 	close(filefd[1]);
 	close(infile_fd);
@@ -82,9 +82,9 @@ void	parent(int *filefd, char **argv, char **envp)
 	if (outfile_fd == -1)
 		error_handler("Error opening output file");
 	if (dup2(filefd[0], STDIN_FILENO) == -1)
-		error_handler("dup2 filefd[0] failed");
+		error_handler("Dup2 filefd[0] failed");
 	if (dup2(outfile_fd, STDOUT_FILENO) == -1)
-		error_handler("dup2 outfile_fd failed");
+		error_handler("Dup2 outfile_fd failed");
 	close(filefd[0]);
 	close(filefd[1]);
 	close(outfile_fd);

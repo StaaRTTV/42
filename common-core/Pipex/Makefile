@@ -34,6 +34,7 @@ ${LIBFT}:
 
 ${NAME}: ${OBJECTS} ${LIBFT}
 	${COMP} ${CFLAGS} -o $@ $^ ${LDFLAGS}
+	chmod +x $@
 
 clean :
 			rm -f ${OBJECTS}
