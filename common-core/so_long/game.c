@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:37:50 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/28 14:50:45 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/30 15:35:45 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,25 @@ int	close_game(t_g *game)
 {
 	int	i;
 
-	i = 0;
-	while (game->map[i])
-		free(game->map[i++]);
-	free(game->map);
 	free_textures(game);
+	if (game->map)
+	{
+		i = 0;
+		while (game->map[i])
+		{
+			free(game->map[i]);
+			i++;
+		}
+		free(game->map);
+	}
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)
+	{
 		mlx_destroy_display(game->mlx);
-	if (game->mlx)
 		free(game->mlx);
+	}
 	exit(0);
-	return (0);
 }
 
 void	count_collectibles(t_g *game)
@@ -51,7 +57,14 @@ void	count_collectibles(t_g *game)
 	}
 }
 
-void	free_textures(t_g *game)
+void	ft_exit(char *str)
+{
+	ft_putstr_fd("Error\n", 1);
+	ft_putstr_fd(str, 1);
+	exit(EXIT_FAILURE);
+}
+
+void	free_textures_2(t_g *game)
 {
 	mlx_destroy_image(game->mlx, game->wall);
 	mlx_destroy_image(game->mlx, game->floor);
@@ -69,24 +82,4 @@ void	free_textures(t_g *game)
 	mlx_destroy_image(game->mlx, game->collectible[4]);
 	mlx_destroy_image(game->mlx, game->collectible[5]);
 	mlx_destroy_image(game->mlx, game->mob);
-}
-
-void	free_map(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-	{
-		free(map[i]);
-		i++;
-	}
-	free(map);
-}
-
-void	ft_exit(char *str)
-{
-	ft_putstr_fd("Error\n", 1);
-	ft_putstr_fd(str, 1);
-	exit(1);
 }

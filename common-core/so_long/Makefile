@@ -6,7 +6,7 @@
 #    By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 13:21:22 by gpochon           #+#    #+#              #
-#    Updated: 2024/12/27 11:40:27 by gpochon          ###   ########.fr        #
+#    Updated: 2024/12/30 13:18:31 by gpochon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRCS	= game.c\
 	map_validator2.c\
 	solglissant2.c\
 	dfs.c\
-	dfs_e.c
+	dfs_e.c\
+	free.c
 
 OBJECTS	= $(SRCS:.c=.o)
 INCS	= includes

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movements.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpochon <gpochon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 21:11:51 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/28 12:41:22 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/30 15:36:46 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,9 @@ int	handle_movement(int keycode, t_g *game)
 
 void	put_img(t_g *game, void *img, int x, int y)
 {
+	if (!img)
+	{
+		ft_exit("Error: Image not loaded correctly\n");
+	}
 	mlx_put_image_to_window(game->mlx, game->win, img, x, y);
 }

@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 11:43:25 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/30 10:24:41 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/30 14:11:15 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "../mlx/mlx.h"
 # include <X11/keysym.h>
 # include <fcntl.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <time.h>
 
@@ -92,7 +91,6 @@ int			close_game(t_g *game);
 void		render_map(t_g *game);
 void		mob_handle(t_g *game, int x, int y);
 void		check_mob(t_g *game, char to_check);
-void		ft_exit(char *str);
 void		move_character(t_g *game, int x, int y);
 void		count_mob(t_g *game);
 void		char_touch_mob(t_g *game, int x, int y);
@@ -108,7 +106,12 @@ void		put_img(t_g *game, void *img, int x, int y);
 void		if_touch_mob(t_g *game, int x, int y);
 int			verify_gems(t_g *game);
 int			verify_exit(t_g *game);
-void		is_ber(char *str);
+void		is_ber(char *str, t_g *game);
 void		map_check_rectangle(t_g *game);
+void		ft_exit(char *str);
+void		free_game(t_g *game);
+void		free_mlx_resources(t_g *game);
+void		error_exit(t_g *game, char *message);
+void		free_textures_2(t_g *game);
 
 #endif
