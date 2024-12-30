@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 10:35:31 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/30 15:36:27 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/30 15:56:35 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,7 @@ static void	check_other(t_g *game, char to_check)
 		y++;
 	}
 	if (check == 0 || check > 1)
-	{
-		ft_putstr_fd("Error\n", 1);
-		ft_printf("There is either no '%c' or too much.\n", to_check);
-		error_exit(game, "");
-	}
+		error_exit(game, "There is either too much P/E, or none\n");
 }
 
 static void	check_gem(t_g *game, char to_check)
@@ -112,9 +108,7 @@ static void	check_gem(t_g *game, char to_check)
 	}
 	if (check == 0)
 	{
-		ft_putstr_fd("Error\n", 1);
-		ft_printf("There is no gems\n", to_check);
-		error_exit(game, "");
+		error_exit(game, "There is no gems\n");
 	}
 }
 

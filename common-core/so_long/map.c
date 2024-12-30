@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:13:05 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/28 14:55:51 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/30 15:51:35 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,7 @@ void	load_sprites(t_g *game)
 		|| game->collectible[0] == NULL || game->exit[0] == NULL
 		|| game->chr == NULL)
 	{
-		ft_putstr_fd("Error\n", 2);
-		exit(EXIT_FAILURE);
+		error_exit(game, "Euh y a un souci avec les textures\n");
 	}
 }
 

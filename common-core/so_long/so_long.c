@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 10:58:04 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/30 15:44:45 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/30 15:47:44 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	main(int argc, char **argv)
 	size_of(&game);
 	game.mlx = mlx_init();
 	game.win = mlx_new_window(game.mlx, game.tile_size * game.width,
-			game.tile_size * game.height, "SO FUCKING LONG");
+			game.tile_size * game.height, "So_long");
 	init(&game);
 	is_ber(argv[1], &game);
 	mlx_hook(game.win, 17, 0L, close_game, &game);

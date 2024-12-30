@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:21:05 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/30 14:10:58 by gpochon          ###   ########.fr       */
+/*   Updated: 2024/12/30 15:59:06 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ void	check_mob(t_g *game, char to_check)
 	}
 	if (check > 1)
 	{
-		ft_putstr_fd("Error\n", 1);
-		ft_printf("There is too much mobs !\n", to_check);
-		exit(1);
+		error_exit(game, "There is too much mobs\n");
 	}
 }
 
@@ -54,15 +52,11 @@ void	map_check_rectangle(t_g *game)
 		x = ft_strlen2emedunom(game->map[y]);
 		if (x != width)
 		{
-			ft_putstr_fd("Error\n", 1);
-			ft_printf("Row %d: length = %d (expected %d)\n", y, x, width);
-			exit(1);
+			error_exit(game, "There is an issue with the length\n");
 		}
 		if (x == 0)
 		{
-			ft_putstr_fd("Error\n", 1);
-			ft_printf("Empty row detected in map\n");
-			exit(1);
+			error_exit(game, "Empty row detected in map\n");
 		}
 		y++;
 	}
