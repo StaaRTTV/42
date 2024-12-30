@@ -67,8 +67,10 @@ void	child_1(int *filefd, char **argv, char **envp)
 	close(filefd[0]);
 	close(filefd[1]);
 	close(infile_fd);
+	if (ft_strlen(argv[4]) == 0 || killmyself(argv[4]) == 1)
+		error_handler("No 1st command");
 	cmd1 = ft_split(argv[2], ' ');
-	if (cmd1 == NULL)
+	if (!cmd1)
 		error_handler("ft_split failed");
 	ft_execute_command(cmd1, envp);
 }
