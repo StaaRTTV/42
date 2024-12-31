@@ -33,7 +33,7 @@ static void	ft_execute_command(char **cmd, char **envp)
 	if (!cmd_path)
 	{
 		free_cmd(cmd);
-		error_handler("Command not found");
+		error_handler("Command does not exist");
 	}
 	execve(cmd_path, cmd, envp);
 	free(cmd_path);
@@ -67,7 +67,7 @@ void	child_1(int *filefd, char **argv, char **envp)
 	close(filefd[0]);
 	close(filefd[1]);
 	close(infile_fd);
-	if (ft_strlen(argv[4]) == 0 || killmyself(argv[4]) == 1)
+	if (ft_strlen(argv[2]) == 0 || killmyself(argv[2]) == 1)
 		error_handler("No 1st command");
 	cmd1 = ft_split(argv[2], ' ');
 	if (!cmd1)
