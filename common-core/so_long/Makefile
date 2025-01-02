@@ -16,10 +16,10 @@ SRCS	= game.c\
 	so_long.c\
 	map_validator.c\
 	movements.c\
-	bonus.c\
-	solglissant.c\
+	bonus_bonus.c\
+	solglissant_bonus.c\
 	map_validator2.c\
-	solglissant2.c\
+	solglissant2_bonus.c\
 	dfs.c\
 	dfs_e.c\
 	free.c
@@ -48,6 +48,8 @@ ${MLX}:
 
 ${NAME}: ${OBJECTS} ${LIBFT} ${MLX}
 	${COMP} ${CFLAGS} -o $@ $^ ${LDFLAGS}
+
+bonus:	all
 
 debug:
 	${MAKE} fclean
