@@ -36,22 +36,29 @@ GFLAGS = -g -O0 -fsanitize=address
 LDFLAGS = -L${LIBFT_DIR} -L$(MLX_DIR) -lft -lmlx -lX11 -lXext -lXrender -lm
 
 .c.o:
+	@echo "🔥 Compiling: $< 🔥"
 	${COMP} ${CFLAGS} -c $< -o $@
 
 all : ${NAME}
 
 ${LIBFT}: 
+	@echo "🏋️‍♂️ Building Libft like a Chad..."
 	make -C ${LIBFT_DIR}
 
 ${MLX}:
+	@echo "🛠️ Assembling the MiniLibX greatness..."
 	make -C ${MLX_DIR}
 
 ${NAME}: ${OBJECTS} ${LIBFT} ${MLX}
+	@echo "⚡ Linking everything to create ${NAME} ⚡"
 	${COMP} ${CFLAGS} -o $@ $^ ${LDFLAGS}
+	@echo "🚀 ${NAME} is ready to dominate the universe! 🚀"
 
 bonus:	all
+	@echo "🎉 Bonus mode activated! Flex those coding muscles! 🎉"
 
 debug:
+	@echo "🐞 Debug mode enabled! Prepare for battle! 🐞"
 	${MAKE} fclean
 	${MAKE} -C ${LIBFT_DIR} fclean
 	${MAKE} -C ${LIBFT_DIR} debug
@@ -60,15 +67,21 @@ debug:
 	${MAKE} all CFLAGS="${GFLAGS}"
 
 clean :
-			rm -f ${OBJECTS}
-			make -C ${LIBFT_DIR} clean
-			make -C ${MLX_DIR} clean
+	@echo "🧹 Cleaning up the mess..."
+	rm -f ${OBJECTS}
+	make -C ${LIBFT_DIR} clean
+	make -C ${MLX_DIR} clean
+	@echo "✅ Cleanup complete. Ready for more action."
 
 fclean :	clean
-			rm -f ${NAME}
-			make -C ${LIBFT_DIR} fclean
-			make -C ${MLX_DIR} clean
+	@echo "🗑️ Full cleanup initiated. Leaving no traces behind!"
+	rm -f ${NAME}
+	make -C ${LIBFT_DIR} fclean
+	make -C ${MLX_DIR} clean
+	@echo "🚮 All clean. Let's build it again!"
 
 re:			fclean all
+	@echo "🔄 Rebuilding everything from scratch. Chad style. 🔄"
 
-.PHONY:		all clean fclean re
+.PHONY:		all clean fclean re bonus debug
+

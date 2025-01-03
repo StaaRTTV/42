@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:38:59 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/03 16:23:08 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/03 19:42:31 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,5 @@ void	multiple_args(int ac, char **av)
 
 	i = 1;
 	check_mlt_args(av);
-	ft_printf("Multiple arguments ca a marche\n");
 	exit (0);
 }
