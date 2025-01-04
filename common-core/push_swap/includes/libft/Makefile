@@ -36,6 +36,7 @@ SRCS	= ft_atoi.c\
 	ft_strdup.c\
 	ft_print_char.c\
 	ft_print_hex.c\
+	ft_isonlyspace.c\
 	ft_print_nbr.c\
 	ft_print_pointer.c\
 	ft_print_string.c\

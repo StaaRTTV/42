@@ -6,26 +6,45 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:38:59 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/03 19:42:31 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/03 22:15:26 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	check_mlt_args(char **av)
+static int    ft_strisdigit(char *str)
 {
-	int	i;
-	i = 1;
-	while (av[i] != '\0')
-	{
-		if (ft_isdigit(av[i]) == 0)
-		{
-			ft_printf("Multiple arguments ca a pas marche, c'etait le char %s\n", av[i]);
-			ft_error("Invalid argument, either choose a single argument or multiple arguments or the arguments are not digits");
-		}	
-		i++;
-	}
+    int    i;
 
+    i = 0;
+    if (str[i] == '-' || str[i] == '+')
+	{
+        i++;
+		if (str[i] == '\0')
+			return (1);
+	}
+    while(str[i] != '\0')
+    {
+        if (ft_isdigit(str[i]) == 0)
+            return (1);
+        i++;
+    }
+    return (0);
+}
+
+void	check_mlt_args(char **av, int ac)
+{
+    int    i;
+    
+    i = 1;
+    while (i < ac)
+    {
+        if(ft_strlen(av[i]) < 1 || ft_strisdigit(av[i]) == 1)
+            ft_printf("✖ Argument [%d] is invalid ✖\n", i);
+        else
+            ft_printf("✔ Argument [%d] is valid ✔\n", i);
+        i++;
+    }
 }
 
 void	multiple_args(int ac, char **av)
@@ -35,6 +54,6 @@ void	multiple_args(int ac, char **av)
 	int			i;
 
 	i = 1;
-	check_mlt_args(av);
+	check_mlt_args(av, ac);
 	exit (0);
 }

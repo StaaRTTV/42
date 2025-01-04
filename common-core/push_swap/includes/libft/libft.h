@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpochon <gpochon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 13:55:27 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/28 13:34:40 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/03 21:43:25 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int				ft_isalnum(int i);
 int				ft_isalpha(int i);
 int				ft_isascii(int i);
 int				ft_isprint(int i);
+int				ft_isonlyspace(char *str);
 int				ft_isdigit(int i);
 int				ft_strlcat(char *dest, const char *src, size_t size);
 int				ft_strlcpy(char *dest, const char *src, size_t size);
