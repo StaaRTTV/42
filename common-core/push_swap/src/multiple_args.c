@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:38:59 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/03 22:15:26 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/06 09:31:03 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,16 @@ static int    ft_strisdigit(char *str)
     int    i;
 
     i = 0;
+    while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
+            || str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
+        i++;
     if (str[i] == '-' || str[i] == '+')
 	{
         i++;
 		if (str[i] == '\0')
 			return (1);
 	}
-    while(str[i] != '\0')
+    while (str[i] != '\0')
     {
         if (ft_isdigit(str[i]) == 0)
             return (1);
