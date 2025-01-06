@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:38:59 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/06 09:31:03 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/06 11:10:00 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	check_mlt_args(char **av, int ac)
     i = 1;
     while (i < ac)
     {
-        if(ft_strlen(av[i]) < 1 || ft_strisdigit(av[i]) == 1)
+        if(ft_strlen(av[i]) < 1 || ft_strisdigit(av[i]) == 1 || ft_isonlyspace(av[i]) == 0)
             ft_printf("✖ Argument [%d] is invalid ✖\n", i);
         else
             ft_printf("✔ Argument [%d] is valid ✔\n", i);

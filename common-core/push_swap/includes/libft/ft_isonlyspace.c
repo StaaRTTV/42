@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 21:41:26 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/03 21:43:08 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/06 11:12:54 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_isonlyspace(char *str)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] != ' ' || str[i] != '\t' || str[i] != '\n')
+		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
 			return (1);
 		i++;
 	}
