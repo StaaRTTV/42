@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 13:17:31 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/06 13:20:30 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/07 16:18:44 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,27 @@
 
 void	single_arg(char *av)
 {
-	tps_list	*stack_a;
-	tps_list	*stack_b;
 	char		**tab;
 	int			i;
 
-	i = 0;
+	i = -1;
 	if (ft_strlen(av) < 1 || ft_isonlyspace(av) == 0)
 		ft_error("✖ Argument is invalid ✖");
 	tab = ft_split(av, ' ');
-	while (tab[i] != NULL)
+	if (!tab)
+		ft_error("ft_split failed"); 
+	while (i++, tab[i] != NULL)
 	{
 		if (ft_strisdigit(tab[i]) == 1)
 		{
+			free_tab(tab);
 			ft_error("✖ Argument is invalid ✖");
 		}
-		else
+		if (ft_atol(tab[i]) > INT_MAX || ft_atol(tab[i]) < INT_MIN)
 		{
-			tab[i] = ft_atoi(tab[i]);
+			free_tab(tab);
+			ft_error("✖ Argument is invalid ✖");
 		}
-		i++;
+		ft_printf("✔ Argument is valid ✔\n");
 	}
 }

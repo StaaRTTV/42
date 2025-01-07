@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:59:14 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/03 15:50:59 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/07 14:14:49 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ typedef struct ps_list
 void	ft_error(char *str);
 void	single_arg(char *av);
 void	multiple_args(int ac, char **av);
+void	free_tab(char **tab);
+int		ft_strisdigit(char *str);
 
 #endif

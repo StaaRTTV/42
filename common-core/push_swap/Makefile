@@ -6,14 +6,15 @@
 #    By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 13:21:22 by gpochon           #+#    #+#              #
-#    Updated: 2025/01/03 15:53:29 by gpochon          ###   ########.fr        #
+#    Updated: 2025/01/07 14:17:25 by gpochon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= push_swap
 SRCS	= src/main.c\
 		src/multiple_args.c\
-		src/single_arg.c
+		src/single_arg.c\
+		src/tools.c
 OBJECTS	= $(SRCS:.c=.o)
 INCS	= includes
 LIBFT_DIR = ./includes/libft

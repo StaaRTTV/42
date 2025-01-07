@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen2emedunom.c                               :+:      :+:    :+:   */
+/*   ft_isonlyspace.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpochon <gpochon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 21:12:41 by gpochon           #+#    #+#             */
-/*   Updated: 2024/12/28 13:34:19 by gpochon          ###   ########.fr       */
+/*   Created: 2025/01/03 21:41:26 by gpochon           #+#    #+#             */
+/*   Updated: 2025/01/07 16:23:56 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen2emedunom(const char *str)
+int	ft_isonlyspace(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] && str[i] != '\n')
+	while (str[i] != '\0')
+	{
+		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
+			return (1);
 		i++;
-	return (i);
+	}
+	return (0);
 }

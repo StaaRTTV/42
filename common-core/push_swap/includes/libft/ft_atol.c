@@ -1,24 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 12:59:02 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/07 14:17:40 by gpochon          ###   ########.fr       */
+/*   Created: 2025/01/07 13:51:49 by gpochon           #+#    #+#             */
+/*   Updated: 2025/01/07 16:24:55 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+long	ft_atol(const char *str)
 {
-	if (ac == 2)
-		single_arg(av[1]);
-	if (ac > 2)
-		multiple_args(ac, av);
-	else if (ac == 1)
-		ft_error("");
-	return (0);
+	long	result;
+	int		sign;
+
+	sign = 1;
+	result = 0;
+	if (*str == '-')
+	{
+		sign = -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		if (result > (LONG_MAX - (*str - '0')) / 10)
+		{
+			if (sign == 1)
+				return (LONG_MAX);
+			else
+				return (LONG_MIN);
+		}
+		result = result * 10 + (*str - '0');
+		str++;
+	}
+	return (result * sign);
 }
