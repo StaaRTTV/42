@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:38:59 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/07 14:58:08 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/08 14:57:51 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_strisdigit(char *str)
 	return (0);
 }
 
-void	check_mlt_args(char **av, int ac)
+void	check_mlt_args(int ac, char **av)
 {
 	int	i;
 
@@ -51,15 +51,4 @@ void	check_mlt_args(char **av, int ac)
 			ft_printf("✔ Argument is valid ✔\n");
 		i++;
 	}
-}
-
-void	multiple_args(int ac, char **av)
-{
-	tps_list	*stack_a;
-	tps_list	*stack_b;
-	int			i;
-
-	i = 1;
-	check_mlt_args(av, ac);
-	exit(0);
 }

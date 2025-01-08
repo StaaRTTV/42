@@ -6,13 +6,13 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 13:17:31 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/07 16:18:44 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/08 14:21:25 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	single_arg(char *av)
+char	**single_arg(char *av)
 {
 	char		**tab;
 	int			i;
@@ -37,4 +37,5 @@ void	single_arg(char *av)
 		}
 		ft_printf("✔ Argument is valid ✔\n");
 	}
+	return (tab);
 }

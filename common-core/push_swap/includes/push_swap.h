@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:59:14 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/07 14:14:49 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/08 14:58:39 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ typedef struct ps_list
 }	tps_list;
 
 void	ft_error(char *str);
-void	single_arg(char *av);
-void	multiple_args(int ac, char **av);
+char	**single_arg(char *av);
+void	check_mlt_args(int ac, char **av);
 void	free_tab(char **tab);
+void	dup_check(char **tab, int which);
 int		ft_strisdigit(char *str);
 
 #endif
