@@ -6,14 +6,14 @@
 #    By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 13:21:22 by gpochon           #+#    #+#              #
-#    Updated: 2025/01/07 14:17:25 by gpochon          ###   ########.fr        #
+#    Updated: 2025/01/11 15:27:26 by gpochon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= push_swap
 SRCS	= src/main.c\
-		src/multiple_args.c\
-		src/single_arg.c\
+		src/args.c\
+		src/stack.c\
 		src/tools.c
 OBJECTS	= $(SRCS:.c=.o)
 INCS	= includes

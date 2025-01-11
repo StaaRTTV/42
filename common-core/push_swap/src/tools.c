@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 13:20:51 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/08 14:48:44 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/11 15:25:36 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	dup_check(char **tab, int which)
 	int	j;
 
 	i = 0;
-	j = 0;
+	j = 1;
 	while (tab[j])
 	{
 		i = j + 1;
@@ -47,7 +47,6 @@ void	dup_check(char **tab, int which)
 		{
 			if (ft_atoi(tab[i]) == ft_atoi(tab[j]))
 			{
-				ft_printf("eeee %d, %d\n", ft_atoi(tab[i]), ft_atoi(tab[j]));
 				if (which == 1)
 					free_tab(tab);
 				ft_error("ma bite");
@@ -56,4 +55,27 @@ void	dup_check(char **tab, int which)
 		}
 		j++;
 	}
+}
+
+int    *tabatoi(char **table, int which, int *size_a)
+{
+    int    i;
+    int    index;
+    int    tmp;
+    int    *stack_a;
+
+    i = (which == 0);
+    tmp = i;
+    index = 0;
+    *size_a = 0;
+    while (table[tmp++])
+        (*size_a)++;
+    stack_a = malloc((*size_a) * sizeof(int));
+    if (!stack_a)
+        errorhandler("Malloc failed");
+    while (table[i])
+        stack_a[index++] = ft_atoi(table[i++]);
+    if (which)
+        freetable(table);
+    return (stack_a);
 }
