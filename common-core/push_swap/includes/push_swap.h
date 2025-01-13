@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:59:14 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/11 15:26:50 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/13 12:26:54 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,24 @@
 
 # include "libft/libft.h"
 
-typedef struct ps_list
+typedef struct s_stack
 {
-	void			*data;
-	struct ps_list	*prev;
-	struct ps_list	*next;
-}	tps_list;
+	int *stack_a;
+	int *stack_b;
+	int size_a;
+	int size_b;
+} t_stack;
 
+typedef enum e_stack_id
+{
+	STACK_A,
+	STACK_B
+} t_stack_id;
 void	ft_error(char *str);
 int		*tabatoi(char **table, int which, int *size_a);
-int		*init_stack_b(int size_a, int *stack_a);
-int		*init_stack_a(int ac, char **av, int size_a);
-char	**single_arg(char *av);
+int		*init_stack_b(int *stack_a, int size_a);
+int		*init_stack_a(int ac, char **av, int *size_a);
+char	**single_arg(char **av);
 void	check_mlt_args(int ac, char **av);
 void	free_tab(char **tab);
 void	dup_check(char **tab, int which);

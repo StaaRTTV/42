@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   multiple_args.c                                    :+:      :+:    :+:   */
+/*   args.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:38:59 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/10 16:17:00 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/13 10:14:45 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,17 @@ void	check_mlt_args(int ac, char **av)
 	}
 }
 
-char	**single_arg(char *av)
+char	**single_arg(char **av)
 {
 	char		**tab;
 	int			i;
 
 	i = -1;
-	if (ft_strlen(av) < 1 || ft_isonlyspace(av) == 0)
+	if (ft_strlen(av[1]) < 1 || ft_isonlyspace(av[1]) == 0)
 		ft_error("✖ Argument is invalid ✖");
-	tab = ft_split(av, ' ');
+	tab = ft_split(av[1], ' ');
 	if (!tab)
-		ft_error("ft_split failed"); 
+		ft_error("ft_split failed");
 	while (i++, tab[i] != NULL)
 	{
 		if (ft_strisdigit(tab[i]) == 1)

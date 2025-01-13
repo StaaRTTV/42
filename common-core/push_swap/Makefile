@@ -6,7 +6,7 @@
 #    By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 13:21:22 by gpochon           #+#    #+#              #
-#    Updated: 2025/01/11 15:27:26 by gpochon          ###   ########.fr        #
+#    Updated: 2025/01/13 11:32:58 by gpochon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ NAME	= push_swap
 SRCS	= src/main.c\
 		src/args.c\
 		src/stack.c\
-		src/tools.c
+		src/tools.c\
+		src/ps_ops.c\
+		src/revrot_ops.c
 OBJECTS	= $(SRCS:.c=.o)
 INCS	= includes
 LIBFT_DIR = ./includes/libft

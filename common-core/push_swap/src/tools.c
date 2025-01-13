@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 13:20:51 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/11 15:25:36 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/13 11:45:33 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,13 @@ void	dup_check(char **tab, int which)
 	int	j;
 
 	i = 0;
-	j = 1;
-	while (tab[j])
+	if (which == 0)
+		i = 1;
+	j = 0;
+	while (tab[i])
 	{
-		i = j + 1;
-		while (tab[i])
+		j = i + 1;
+		while (tab[j])
 		{
 			if (ft_atoi(tab[i]) == ft_atoi(tab[j]))
 			{
@@ -51,31 +53,31 @@ void	dup_check(char **tab, int which)
 					free_tab(tab);
 				ft_error("ma bite");
 			}
-			i++;
+			j++;
 		}
-		j++;
+		i++;
 	}
 }
 
-int    *tabatoi(char **table, int which, int *size_a)
+int	*tabatoi(char **table, int which, int *size_a)
 {
-    int    i;
-    int    index;
-    int    tmp;
-    int    *stack_a;
+	int	i;
+	int	index;
+	int	tmp;
+	int	*stack_a;
 
-    i = (which == 0);
-    tmp = i;
-    index = 0;
-    *size_a = 0;
-    while (table[tmp++])
-        (*size_a)++;
-    stack_a = malloc((*size_a) * sizeof(int));
-    if (!stack_a)
-        errorhandler("Malloc failed");
-    while (table[i])
-        stack_a[index++] = ft_atoi(table[i++]);
-    if (which)
-        freetable(table);
-    return (stack_a);
+	i = (which == 0);
+	tmp = i;
+	index = 0;
+	*size_a = 0;
+	while (table[tmp++])
+		(*size_a)++;
+	stack_a = malloc((*size_a) * sizeof(int));
+	if (!stack_a)
+		ft_error("Malloc failed");
+	while (table[i])
+		stack_a[index++] = ft_atoi(table[i++]);
+	if (which)
+		free_tab(table);
+	return (stack_a);
 }
