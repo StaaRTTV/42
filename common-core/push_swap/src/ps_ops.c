@@ -6,15 +6,15 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:18:48 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/14 10:40:37 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/14 10:46:11 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void push_a(t_stack *stacks)
+void	push_a(t_stack *stacks)
 {
-	int i;
+	int	i;
 
 	i = stacks->size_a;
 	if (stacks->size_b <= 0)
@@ -34,9 +34,10 @@ void push_a(t_stack *stacks)
 	stacks->size_a++;
 	stacks->size_b--;
 }
-void push_b(t_stack *stacks)
+
+void	push_b(t_stack *stacks)
 {
-	int i;
+	int	i;
 
 	i = stacks->size_b;
 	if (stacks->size_a >= 0)
@@ -57,9 +58,9 @@ void push_b(t_stack *stacks)
 	stacks->size_a--;
 }
 
-void swap(t_stack *stacks, t_stack_id dest)
+void	swap(t_stack *stacks, t_stack_id dest)
 {
-	int tmp;
+	int	tmp;
 
 	if (dest == STACK_A && stacks->size_a > 1)
 	{
@@ -75,7 +76,7 @@ void swap(t_stack *stacks, t_stack_id dest)
 	}
 }
 
-void ss_swap(t_stack *stacks)
+void	ss_swap(t_stack *stacks)
 {
 	swap(stacks, STACK_A);
 	swap(stacks, STACK_B);

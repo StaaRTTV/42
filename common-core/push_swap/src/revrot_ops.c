@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:18:11 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/13 16:24:04 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/14 10:45:43 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	rot(t_stack *stacks, t_stack_id which)
 {
-	int tmp;
-	int i;
+	int	tmp;
+	int	i;
 
 	i = 0;
 	if (which == STACK_A && stacks->size_a > 1)
@@ -42,8 +42,8 @@ void	rot(t_stack *stacks, t_stack_id which)
 
 void	rrot(t_stack *stacks, t_stack_id which)
 {
-	int tmp;
-	int i;
+	int	tmp;
+	int	i;
 
 	if (which == STACK_A)
 	{
@@ -69,8 +69,14 @@ void	rrot(t_stack *stacks, t_stack_id which)
 	}
 }
 
-void rr(t_stack *stacks)
+void	rr(t_stack *stacks)
 {
 	rot(stacks, STACK_A);
 	rot(stacks, STACK_B);
+}
+
+void	rrr(t_stack *stacks)
+{
+	rrot(stacks, STACK_A);
+	rrot(stacks, STACK_B);
 }
