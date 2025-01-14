@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:59:14 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/13 12:26:54 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/14 10:04:45 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ typedef enum e_stack_id
 	STACK_A,
 	STACK_B
 } t_stack_id;
+
+void	rot(t_stack *stacks, t_stack_id which);
+void	rrot(t_stack *stacks, t_stack_id which);
+void	rr(t_stack *stacks);
 void	ft_error(char *str);
 int		*tabatoi(char **table, int which, int *size_a);
 int		*init_stack_b(int *stack_a, int size_a);
