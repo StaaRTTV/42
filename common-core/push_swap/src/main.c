@@ -6,13 +6,13 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:59:02 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/14 14:03:23 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/14 16:09:44 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void printstack(t_stack *stacks)
+void printstack(t_stack *stacks)
 {
 	int i;
 
@@ -43,9 +43,10 @@ int	main(int ac, char **av)
 		if (stacks.stack_a[0] > stacks.stack_a[1])
 			swap(&stacks, STACK_A);
 	}
-	printstack(&stacks);
+	if (stacks.size_a == 3)
+		sort_3_elements(&stacks);
+	// printstack(&stacks);
 	quicksort(&stacks);
-	printstack(&stacks);
 	free(stacks.stack_a);
 	free(stacks.stack_b);
 	return (0);

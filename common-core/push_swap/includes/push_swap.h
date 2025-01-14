@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:59:14 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/14 14:02:31 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/14 15:57:56 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ void	ss_swap(t_stack *stacks);
 void	rot(t_stack *stacks, t_stack_id which);
 void	rrot(t_stack *stacks, t_stack_id which);
 void	rr(t_stack *stacks);
+void    sort_3_elements(t_stack *stacks);
+void	printstack(t_stack *stacks);
 void	rrr(t_stack *stacks);
+void	is_sorted(t_stack *stacks);
 void	ft_error(char *str);
 int		*tabatoi(char **table, int which, int *size_a);
 int		*init_stack_b(int *stack_a, int size_a, t_stack *stacks);

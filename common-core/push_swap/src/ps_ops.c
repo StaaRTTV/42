@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:18:48 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/14 11:16:21 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/14 15:55:37 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	push_a(t_stack *stacks)
 	int	i;
 
 	i = stacks->size_a;
+	ft_printf("pa\n");
 	if (stacks->size_b <= 0)
 		return ;
 	while (i > 0)
@@ -40,6 +41,7 @@ void	push_b(t_stack *stacks)
 	int	i;
 
 	i = stacks->size_b;
+	ft_printf("pb\n");
 	if (stacks->size_a <= 0)
 		return ;
 	while (i > 0)
@@ -64,12 +66,14 @@ void	swap(t_stack *stacks, t_stack_id dest)
 
 	if (dest == STACK_A && stacks->size_a > 1)
 	{
+		ft_printf("sa\n");
 		tmp = stacks->stack_a[0];
 		stacks->stack_a[0] = stacks->stack_a[1];
 		stacks->stack_a[1] = tmp;
 	}
 	else if (dest == STACK_B && stacks->size_b > 1)
 	{
+		ft_printf("sb\n");
 		tmp = stacks->stack_b[0];
 		stacks->stack_b[0] = stacks->stack_b[1];
 		stacks->stack_b[1] = tmp;
@@ -78,6 +82,7 @@ void	swap(t_stack *stacks, t_stack_id dest)
 
 void	ss_swap(t_stack *stacks)
 {
+	ft_printf("ss\n");
 	swap(stacks, STACK_A);
 	swap(stacks, STACK_B);
 }

@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:38:59 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/13 10:14:45 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/14 16:10:26 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	check_mlt_args(int ac, char **av)
 			ft_error("✖ Argument is invalid ✖\n");
 		if (ft_atol(av[i]) > INT_MAX || ft_atol(av[i]) < INT_MIN)
 			ft_error("✖ Argument is invalid ✖\n");
-		else
-			ft_printf("✔ Argument is valid ✔\n");
+		// else
+		// 	ft_printf("✔ Argument is valid ✔\n");
 		i++;
 	}
 }
@@ -76,7 +76,7 @@ char	**single_arg(char **av)
 			free_tab(tab);
 			ft_error("✖ Argument is invalid ✖");
 		}
-		ft_printf("✔ Argument is valid ✔\n");
+		// ft_printf("✔ Argument is valid ✔\n");
 	}
 	return (tab);
 }

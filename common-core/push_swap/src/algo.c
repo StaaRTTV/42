@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:32:07 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/14 14:46:45 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/14 16:09:30 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,33 @@ void	sort_3_elements(t_stack *stacks)
         swap(stacks, STACK_A);
 }
 
+void is_sorted(t_stack *stacks)
+{
+	int i;
+
+	i = 0;
+	if (stacks->size_b > 0)
+		return;
+	while (i < stacks->size_a - 1)
+	{
+		if (stacks->stack_a[i] < stacks->stack_a[i + 1])
+			i++;
+		else
+			return;
+	}
+	// printstack(stacks);
+	free(stacks->stack_a);
+	free(stacks->stack_b);
+	exit(0);
+}
+
 void	quicksort_b(t_stack *stacks)
 {
 	int pivot;
 	int i;
+	int initial_size;
 
 	i = 0;
-	if (stacks->size_b == 0)
-		return;
 	if (stacks->size_b <= 3)
     {
         while (stacks->size_b > 0)
@@ -37,16 +56,15 @@ void	quicksort_b(t_stack *stacks)
         sort_3_elements(stacks);
         return;
     }
+	initial_size = stacks->size_b;
 	pivot = stacks->stack_b[stacks->size_b / 2];
-	while (i < stacks->size_b)
+	while (i < initial_size)
 	{
 		if (stacks->stack_b[0] >= pivot)
-        {
             push_a(stacks);
-			i++;
-        }
         else
             rot(stacks, STACK_B);
+		i++;
 	}
 	quicksort(stacks);
 	quicksort_b(stacks);
@@ -56,26 +74,19 @@ void quicksort(t_stack *stacks)
 {
 	int pivot;
 	int i;
+	int initial_size;
 
-	i = 0;
-	if (stacks->size_a <= 3)
-    {
-        sort_3_elements(stacks);
-        return;
-    }
+	is_sorted(stacks);
+	initial_size = stacks->size_a;
 	pivot = stacks->stack_a[stacks->size_a / 2];
-	while (i < stacks->size_a)
+	i = 0;
+	while (i < initial_size)
 	{
-		while (i < stacks->size_a)
-		{
-			if (stacks->stack_a[0] < pivot)
-        {
-            push_b(stacks);
-            i++;
-        }
-        else
-            rot(stacks, STACK_A);
-		}
+		if (stacks->stack_a[0] < pivot)
+			push_b(stacks);
+		else
+			rot(stacks, STACK_A);
+		i++;
 	}
 	quicksort_b(stacks);
 	quicksort(stacks);
