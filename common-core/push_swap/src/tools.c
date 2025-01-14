@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 13:20:51 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/13 11:45:33 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/14 17:20:39 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,3 +81,4 @@ int	*tabatoi(char **table, int which, int *size_a)
 		free_tab(table);
 	return (stack_a);
 }
+

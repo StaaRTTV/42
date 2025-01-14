@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:32:07 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/14 16:09:30 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/14 16:50:24 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,9 @@ void is_sorted(t_stack *stacks)
 		return;
 	while (i < stacks->size_a - 1)
 	{
-		if (stacks->stack_a[i] < stacks->stack_a[i + 1])
-			i++;
-		else
+		if (stacks->stack_a[i] > stacks->stack_a[i + 1])
 			return;
+		i++;
 	}
 	// printstack(stacks);
 	free(stacks->stack_a);
@@ -66,8 +65,11 @@ void	quicksort_b(t_stack *stacks)
             rot(stacks, STACK_B);
 		i++;
 	}
-	quicksort(stacks);
-	quicksort_b(stacks);
+	if (stacks->size_b != initial_size)  
+    {
+        quicksort(stacks);
+        quicksort_b(stacks);
+    }
 }
 
 void quicksort(t_stack *stacks)
@@ -88,8 +90,11 @@ void quicksort(t_stack *stacks)
 			rot(stacks, STACK_A);
 		i++;
 	}
-	quicksort_b(stacks);
-	quicksort(stacks);
+	if (stacks->size_a != initial_size)
+    {
+        quicksort_b(stacks);
+        quicksort(stacks);
+    }
 }
 
 
