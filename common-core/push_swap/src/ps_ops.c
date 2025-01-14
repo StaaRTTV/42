@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:18:48 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/14 10:46:11 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/14 11:16:21 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	push_b(t_stack *stacks)
 	int	i;
 
 	i = stacks->size_b;
-	if (stacks->size_a >= 0)
+	if (stacks->size_a <= 0)
 		return ;
 	while (i > 0)
 	{

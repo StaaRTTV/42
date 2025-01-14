@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 16:17:23 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/13 11:41:13 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/14 10:56:12 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@ int	*init_stack_a(int ac, char **av, int *size_a)
 	return (stack_a);
 }
 
-int	*init_stack_b(int *stack_a, int size_a)
+int	*init_stack_b(int *stack_a, int size_a, t_stack *stacks)
 {
 	int	*stack_b;
 
+	stacks->size_b = 0;
 	stack_b = malloc(sizeof(int) * size_a);
 	if (!stack_b)
 	{
