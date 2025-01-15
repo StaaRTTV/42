@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 17:20:46 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/14 21:05:17 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/15 13:14:31 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int  *stack_to_tab(t_stack *stacks, int *tab, t_stack_id which)
 			i++;
 		}
 	}
-	else
+	else if (which == STACK_B)
 	{
 		while (i < stacks->size_b)
 		{
@@ -36,17 +36,17 @@ static int  *stack_to_tab(t_stack *stacks, int *tab, t_stack_id which)
 	return (tab);
 }
 
-static void	sort_int_tab(int *tab, t_stack *stacks)
+static void	sort_int_tab(int *tab, int size)
 {
 	int i;
 	int j;
 	int tmp;
 
 	i = 0;
-	while (i < stacks->size_a)
+	while (i < size)
 	{
 		j = i + 1;
-		while (j < stacks->size_a)
+		while (j < size)
 		{
 			if (tab[i] > tab[j])
 			{
@@ -69,9 +69,11 @@ int	calculate_median_a(t_stack *stacks)
 	if (!tab)
 		ft_error("Malloc failed");
 	tab = stack_to_tab(stacks, tab, STACK_A);
-	sort_int_tab(tab, stacks);
-	median = tab[stacks->size_a / 2];
-	ft_printf("La mediane c'est : %d\n", median);
+	sort_int_tab(tab, stacks->size_a);
+	if (stacks->size_a % 2 == 0)
+		median = (tab[stacks->size_a / 2] + tab[stacks->size_a / 2 - 1]) / 2;
+	else
+		median = tab[stacks->size_a / 2];
 	free(tab);
 	return (median);
 }
@@ -85,9 +87,11 @@ int	calculate_median_b(t_stack *stacks)
 	if (!tab)
 		ft_error("Malloc failed");
 	tab = stack_to_tab(stacks, tab, STACK_B);
-	sort_int_tab(tab, stacks);
-	median = tab[stacks->size_b / 2];
-	ft_printf("La mediane c'est : %d\n", median);
+	sort_int_tab(tab, stacks->size_b);
+	if (stacks->size_b % 2 == 0)
+		median = (tab[stacks->size_b / 2] + tab[stacks->size_b / 2 - 1]) / 2;
+	else
+		median = tab[stacks->size_b / 2];
 	free(tab);
 	return (median);
 }

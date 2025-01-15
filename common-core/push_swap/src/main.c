@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:59:02 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/14 16:09:44 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/15 13:50:19 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,11 @@ int	main(int ac, char **av)
 		if (stacks.stack_a[0] > stacks.stack_a[1])
 			swap(&stacks, STACK_A);
 	}
-	if (stacks.size_a == 3)
+	if (stacks.size_a <= 3)
+	{
 		sort_3_elements(&stacks);
+		return (0);
+	}
 	// printstack(&stacks);
 	quicksort(&stacks);
 	free(stacks.stack_a);
