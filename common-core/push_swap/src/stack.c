@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 16:17:23 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/14 10:56:12 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/14 20:59:28 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	*init_stack_a(int ac, char **av, int *size_a)
 	char	**tab;
 	int		*stack_a;
 
+	stack_a = NULL;
 	if (ac == 2)
 	{
 		tab = single_arg(av);

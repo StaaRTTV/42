@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:32:07 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/14 16:50:24 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/14 21:05:56 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	quicksort_b(t_stack *stacks)
         return;
     }
 	initial_size = stacks->size_b;
-	pivot = stacks->stack_b[stacks->size_b / 2];
+	pivot = calculate_median_b(stacks);
 	while (i < initial_size)
 	{
 		if (stacks->stack_b[0] >= pivot)
@@ -79,8 +79,8 @@ void quicksort(t_stack *stacks)
 	int initial_size;
 
 	is_sorted(stacks);
+	pivot = calculate_median_a(stacks);
 	initial_size = stacks->size_a;
-	pivot = stacks->stack_a[stacks->size_a / 2];
 	i = 0;
 	while (i < initial_size)
 	{
