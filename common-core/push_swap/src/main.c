@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:59:02 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/15 13:50:19 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/16 10:07:29 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int ac, char **av)
 	}
 	if (stacks.size_a <= 3)
 	{
-		sort_3_elements(&stacks);
+		sort_3_elements_a(&stacks);
 		return (0);
 	}
 	// printstack(&stacks);

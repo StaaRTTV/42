@@ -6,71 +6,18 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:32:07 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/15 15:46:34 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/17 12:47:08 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-
-void	sort_3_elements_a(t_stack *stacks)
-{
-	int	a;
-	int	b;
-	int	c;
-
-	a = stacks->stack_a[0];
-	b = stacks->stack_a[1];
-	c = stacks->stack_a[2];
-	if (a > b && b > c)
-	{
-		swap(stacks, STACK_A);
-		rrot(stacks, STACK_A);
-	}
-	else if (a > c && c > b)
-		rot(stacks, STACK_A);
-	else if (b > a && a > c)
-		rrot(stacks, STACK_A);
-	else if (b > c && c > a)
-		swap(stacks, STACK_A);
-	else if (c > a && a > b)
-	{
-		swap(stacks, STACK_A);
-		rot(stacks, STACK_A);
-	}
-}
-void	sort_3_elements_b(t_stack *stacks)
-{
-	int	a;
-	int	b;
-	int	c;
-
-	a = stacks->stack_b[0];
-	b = stacks->stack_b[1];
-	c = stacks->stack_b[2];
-	if (a > b && b > c)
-	{
-		swap(stacks, STACK_B);
-		rrot(stacks, STACK_B);
-	}
-	else if (a > c && c > b)
-		rot(stacks, STACK_B);
-	else if (b > a && a > c)
-		rrot(stacks, STACK_B);
-	else if (b > c && c > a)
-		swap(stacks, STACK_B);
-	else if (c > a && a > b)
-	{
-		swap(stacks, STACK_B);
-		rot(stacks, STACK_B);
-	}
-}
 int is_sorted(t_stack *stacks)
 {
 	int i;
 
 	i = 0;
-	if (stacks->size_b > 0)
+	if (stacks->size_b != 0)
 		return (1);
 	while (i < stacks->size_a - 1)
 	{
@@ -78,58 +25,77 @@ int is_sorted(t_stack *stacks)
 			return (1);
 		i++;
 	}
-	// printstack(stacks);
 	return (0);
 }
 
-void	quicksort_b(t_stack *stacks)
+void quicksort_b(t_stack *stacks)
 {
 	int pivot;
-	int i;
-	int initial_size;
+	int pushed;
+	int initialsize;
 
-	i = 0;
+	initialsize = stacks->size_b;
 	if (stacks->size_b <= 3)
-    {
+	{
 		if (stacks->size_b == 2)
 			swap(stacks, STACK_B);
 		else if (stacks->size_b == 3)
-			sort_3_elements(stacks);
-        return;
-    }
-	initial_size = stacks->size_b;
+			sort_3_elements_b(stacks);
+	}
 	pivot = calculate_median_b(stacks);
-	while (i < initial_size)
+	pushed = 0;
+	while (initialsize > 0)
 	{
 		if (stacks->stack_b[0] >= pivot)
-            push_a(stacks);
-        else
-            rot(stacks, STACK_B);
-		i++;
+		{
+			push_a(stacks);
+			pushed++;
+		}
+		else
+			rot(stacks, STACK_B);
+		initialsize--;
 	}
-	quicksort_b(stacks);
+	while (pushed > 0)
+	{
+		rot(stacks, STACK_B);
+		pushed--;
+	}
+	if (stacks->size_b > 0)
+		quicksort_b(stacks);
+	quicksort(stacks);
 }
 
 void quicksort(t_stack *stacks)
 {
 	int pivot;
-	int i;
-	int initial_size;
+	int pushed;
+	int initialsize;
 
-	is_sorted(stacks);
+	initialsize = stacks->size_a;
+	if (is_sorted(stacks) == 0 && stacks->size_b == 0)
+		exit(0);
 	pivot = calculate_median_a(stacks);
-	initial_size = stacks->size_a;
-	i = 0;
-	while (i < initial_size)
+	pushed = 0;
+	while (initialsize > 0)
 	{
 		if (stacks->stack_a[0] <= pivot)
+		{
 			push_b(stacks);
+			pushed++;
+		}
 		else
 			rot(stacks, STACK_A);
-		i++;
+		initialsize--;
 	}
-	quicksort(stacks);
-	quicksort_b(stacks);
+	while (pushed > 0)
+	{
+		rot(stacks, STACK_A);
+		pushed--;
+	}
+	if (is_sorted(stacks) == 1)
+		quicksort(stacks);
+	if (stacks->size_b > 0)
+		quicksort_b(stacks);
 }
 /*
 void	ft_cleanquicksort(void)
