@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:59:14 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/15 14:48:09 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/18 17:30:43 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ typedef struct s_stack
 	int size_b;
 } t_stack;
 
+typedef struct s_chunk
+{
+	int min;
+	int max;
+} t_chunk;
+
 typedef enum e_stack_id
 {
 	STACK_A,
@@ -30,7 +36,13 @@ typedef enum e_stack_id
 } t_stack_id;
 
 void	push_a(t_stack *stacks);
+int    *sort_int_tab(int *tab, int size);
 void	push_b(t_stack *stacks);
+t_chunk	*create_chunk(int *sort_tab, int nbchunk, int size);
+void	push_all_chunks(t_stack *stacks, t_chunk *chunks, int nbchunk);
+int		get_max_pos(t_stack *stacks);
+void	push_back_btoa(t_stack *stacks);
+void	chunk_sort(t_stack *stacks);
 void	quicksort(t_stack *stacks);
 int		calculate_median_a(t_stack *stacks);
 int		calculate_median_b(t_stack *stacks);

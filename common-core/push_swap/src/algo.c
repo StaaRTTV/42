@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:32:07 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/17 12:47:08 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/18 12:27:30 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ void quicksort_b(t_stack *stacks)
 		rot(stacks, STACK_B);
 		pushed--;
 	}
+	quicksort(stacks);
 	if (stacks->size_b > 0)
 		quicksort_b(stacks);
-	quicksort(stacks);
 }
 
 void quicksort(t_stack *stacks)

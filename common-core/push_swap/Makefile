@@ -6,7 +6,7 @@
 #    By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 13:21:22 by gpochon           #+#    #+#              #
-#    Updated: 2025/01/15 14:49:37 by gpochon          ###   ########.fr        #
+#    Updated: 2025/01/18 17:26:24 by gpochon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRCS	= src/main.c\
 		src/rot_ops.c\
 		src/algo.c\
 		src/median.c\
-		src/sort.c
+		src/sort.c\
+		src/chunks.c
 OBJECTS	= $(SRCS:.c=.o)
 INCS	= includes
 LIBFT_DIR = ./includes/libft

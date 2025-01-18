@@ -6,7 +6,7 @@
 /*   By: gpochon <gpochon@student.42luxembourg.l    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 17:20:46 by gpochon           #+#    #+#             */
-/*   Updated: 2025/01/15 13:14:31 by gpochon          ###   ########.fr       */
+/*   Updated: 2025/01/18 17:28:44 by gpochon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int  *stack_to_tab(t_stack *stacks, int *tab, t_stack_id which)
 	return (tab);
 }
 
-static void	sort_int_tab(int *tab, int size)
+int	*sort_int_tab(int *tab, int size)
 {
 	int i;
 	int j;
@@ -58,6 +58,7 @@ static void	sort_int_tab(int *tab, int size)
 		}
 		i++;
 	}
+	return (tab);
 }
 
 int	calculate_median_a(t_stack *stacks)
